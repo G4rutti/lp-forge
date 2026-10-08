@@ -4,7 +4,7 @@ Família não traz cor nem fonte. Cor e fonte vêm de:
 1. **Cor**: DNA da marca (logo, fachada, uniforme, fotos do Insta) → `dna.md`. Se a marca não tem cor, das referências do ramo (`referencias/refs.json`). Nunca de um "neutro elegante" padrão.
 2. **Fonte**: `fontes.md` (pool por categoria), respeitando o histórico (`node scripts/historico.mjs fontes`): não repetir display usada nos últimos 5 projetos nem entre variantes da mesma rodada.
 
-**Proibido como ponto de partida** (é o que toda IA faz): fundo bege/creme/off-white quente, serif de alto contraste com uma palavra em itálico colorida no H1, colagem de fotos inclinadas tipo polaroid com legenda manuscrita, fundo escuro com glow. Só entra se a marca do cliente for literalmente isso (e aí `dna.md` prova).
+**Não é ponto de partida** (é o que toda IA faz; só entra se a skill `vibe` justificar e não repetir o histórico): fundo bege/creme/off-white quente, serif de alto contraste com uma palavra em itálico colorida no H1, colagem de fotos inclinadas tipo polaroid com legenda manuscrita, fundo escuro com glow. Só entra se a marca do cliente for literalmente isso (e aí `dna.md` prova).
 
 ---
 ## foto-real-full-bleed

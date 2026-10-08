@@ -66,6 +66,7 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
 - `remotion-preview`: vídeo da prévia (HyperFrames por padrão, Remotion opcional)
+- `vibe`: lê a vibe do negócio (energia, formalidade, era, tátil↔digital, densidade, ousadia) com evidência do DNA e das referências, e escolhe os componentes de cada seção no 21st, OriginKit e southleft conforme essa vibe; cada variante do leque ganha um hero diferente. Efeitos-assinatura (3D, polaroid, itálico de destaque) não são proibidos: entram com fit ≥ 8 na vibe e marcados `lp-forge: vibe-ok`
 - `referencias-do-ramo`: 3 scouts Haiku acham referências do nicho (galerias por categoria, mercado maior, concorrentes locais), `ref-capture.mjs` tira screenshot e extrai fontes/paleta/CTA, e o modelo principal escreve `referencias.md`. Fontes testadas em `references/fontes.md`
 - `copy-sem-slop`: copy em PT-BR sem vício de IA. Só fatos do `fatos.md` (com fonte e data), voz real do dono (`voz.md`), frases e estruturas proibidas ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"), antes/depois de LP local e nota de 5 dimensões
 

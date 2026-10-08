@@ -21,8 +21,7 @@ Se não dá pra responder 5 e 6, falta informação: busque no DNA da marca (ski
 ## P0: pecados capitais (bloqueiam entrega)
 - **Fundo bege/creme/off-white quente** como base da página. É o padrão nº 1 de LP gerada. Fundo vem da cor da marca (DNA) ou das referências; neutro, só branco/cinza frio ou a cor da marca bem clara.
 - **Fonte do cemitério** como display (Fraunces, Instrument Serif, Playfair, DM Serif, Cormorant, Libre Caslon, Gloock, Poppins, Montserrat, Space Grotesk, Syne). Pool e rotação em `repertorio/references/fontes.md` + `scripts/historico.mjs`.
-- **H1 com a última palavra em itálico colorido** ("há *40 anos.*").
-- **Colagem de fotos inclinadas tipo polaroid**, com ou sem legenda manuscrita.
+- **H1 com a última palavra em itálico colorido** e **colagem de fotos inclinadas/polaroid** como padrão. Esses e outros efeitos-assinatura só entram se a skill `vibe` justificar (fit ≥ 8, marcado com `lp-forge: vibe-ok <regra> · motivo`) e não estiverem no histórico recente.
 - **Repetir** display, fundo ou padrão de um dos últimos 5 projetos (`historico.mjs checar`).
 - Acento índigo/roxo padrão (`#6366f1 #4f46e5 #4338ca #3730a3 #8b5cf6 #7c3aed #a855f7` e parentes). Use o token `--accent` do brief.
 - Gradiente "confiança" de hero: roxo→azul, azul→ciano, índigo→rosa. Superfície chapada + tipografia forte ganha.

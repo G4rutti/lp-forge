@@ -15,7 +15,8 @@ O prompt traz: rodada, nome da variante, pasta de saída, caminho do `brief.md` 
 1. Leia `brief.md`, `dna.md` e `referencias.md` (se houver) e olhe 2-3 screenshots de `referencias/` que combinam com a sua direção. Pegue a sensação, nunca o layout.
 2. Leia as regras: `${CLAUDE_PLUGIN_ROOT}/skills/anti-slop/SKILL.md` e a sua família em `${CLAUDE_PLUGIN_ROOT}/skills/repertorio/references/familias.md`. Para animação, `${CLAUDE_PLUGIN_ROOT}/skills/motion/SKILL.md`.
 3. Escreva no topo do `notes.md`: fonte display/texto (do pool `repertorio/references/fontes.md`, fora da lista "NÃO repetir" que veio no prompt), tokens com a ORIGEM de cada cor (logo/fachada/uniforme/ref), o movimento ousado, a seção fora do padrão, o detalhe de dono.
-4. **Mapa de referências (obrigatório se existir `referencias.md`)**: tabela `| Seção | Referência (site) | O que foi pego (concreto: proporção, tratamento de foto, como mostra preço/horário, ordem das seções) |`, no mínimo 3 linhas, de pelo menos 2 sites diferentes. Abra os screenshots em `referencias/` antes. Sem mapa, a variante é descartada.
+4. **Componentes**: use o hero/candidatos de `componentes.md` que vieram no prompt (21st/OriginKit via MCP), adaptados aos tokens. Efeito-assinatura só com fit ≥ 8 na `vibe.md` e marcado `<!-- lp-forge: vibe-ok <regra> · motivo -->`.
+5. **Mapa de referências (obrigatório se existir `referencias.md`)**: tabela `| Seção | Referência (site) | O que foi pego (concreto: proporção, tratamento de foto, como mostra preço/horário, ordem das seções) |`, no mínimo 3 linhas, de pelo menos 2 sites diferentes. Abra os screenshots em `referencias/` antes. Sem mapa, a variante é descartada.
 
 ## Copy antes do layout
 1. Leia `fatos.md` e `voz.md` (se existirem) e `${CLAUDE_PLUGIN_ROOT}/skills/copy-sem-slop/SKILL.md` + `references/estruturas-pt.md`.

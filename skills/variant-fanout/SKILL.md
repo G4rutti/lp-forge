@@ -35,6 +35,7 @@ Antes: `node "${CLAUDE_PLUGIN_ROOT}/scripts/historico.mjs" fontes` → lista do 
 - cada variante com família diferente E display de categoria diferente (serif / grotesk / condensada / humanista / mono), nenhuma do cemitério nem do histórico; escreva a fonte de cada uma no prompt, não deixe o Haiku escolher;
 - paleta de cada variante sai do DNA (cores reais da marca); pelo menos 1 variante usa a cor da marca como fundo de seção inteira; nenhuma com fundo bege/creme;
 - pelo menos 1 variante é "a referência mais forte do `referencias.md` traduzida pro cliente";
+- cada variante recebe um **hero diferente** de `componentes.md` (skill `vibe`), com o MCP/id do candidato no prompt;
 - cada prompt lista 2-3 referências (site + screenshot em `referencias/`) que aquela variante DEVE aplicar.
 
 Escolha N famílias **contrastantes** da skill `repertorio` (ou N interpretações bem distintas de uma família, se o usuário já escolheu a família). Para cada uma, escreva uma direção de 4-6 linhas: família, dials, fonte display, ousadia específica, seção fora do padrão que ela deve ter.

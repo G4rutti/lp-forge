@@ -7,6 +7,9 @@ description: Como buscar e encaixar componentes prontos via MCPs (21st.dev, Orig
 
 Não reinvente botão. Mas também não cole componente de vitrine sem adaptar: componente de biblioteca sem ajuste é slop de outro tipo.
 
+## Vibe primeiro
+A escolha de componente segue a `vibe.md` (skill `vibe`): busque nos MCPs com as palavras da vibe + nicho, compare 2-3 candidatos por seção e registre o fit em `componentes.md`. Nunca o mesmo hero por padrão.
+
 ## Ordem de busca
 1. **shadcn MCP**: primitivas acessíveis (dialog, accordion, tabs, sheet). Base estrutural.
 2. **21st.dev MCP**: blocos de marketing (hero, pricing, testimonial, navbar), botões e cards com polish. Peça 2-3 opções e compare.
