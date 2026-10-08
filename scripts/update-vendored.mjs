@@ -24,6 +24,11 @@ const SOURCES = [
   { repo: "addyosmani/agent-skills", license: "LICENSE", map: Object.fromEntries(["doubt-driven-development", "frontend-ui-engineering", "browser-testing-with-devtools", "shipping-and-launch"].map((s) => [`skills/${s}`, s])), fixRefs: true },
   { repo: "cloudflare/skills", license: "LICENSE", map: { "skills/web-perf": "web-perf", "skills/wrangler": "wrangler" } },
   { repo: "anthropics/skills", license: "skills/webapp-testing/LICENSE.txt", map: { "skills/webapp-testing": "webapp-testing" } },
+  { repo: "greensock/gsap-skills", license: "LICENSE", map: Object.fromEntries(["gsap-core", "gsap-scrolltrigger", "gsap-timeline", "gsap-plugins", "gsap-react", "gsap-performance"].map((s) => [`skills/${s}`, s])) },
+  { repo: "kylezantos/design-motion-principles", license: "LICENSE", map: { "skills/design-motion-principles": "design-motion-principles" } },
+  { repo: "freshtechbro/claudedesignskills", license: "LICENSE", map: Object.fromEntries(["lightweight-3d-effects", "motion-framer", "animated-component-libraries", "modern-web-design"].map((s) => [`.factory/skills/${s}`, s])) },
+  { repo: "iart-ai/motion-design-skills", license: "LICENSE", map: { "skills/motion-background": "motion-background", "skills/animation-principles": "animation-principles" } },
+  { repo: "lottiefiles/motion-design-skill", license: "LICENSE", map: { "skills/motion-design": "motion-design" } },
   { repo: "hardikpandya/stop-slop", license: "LICENSE", map: { ".": "stop-slop" }, only: ["SKILL.md", "references"] },
   { repo: "heygen-com/hyperframes", license: "LICENSE", map: Object.fromEntries(["hyperframes", "hyperframes-core", "hyperframes-cli", "hyperframes-animation", "hyperframes-keyframes", "general-video", "product-launch-video", "motion-graphics", "media-use"].map((s) => [`skills/${s}`, s])) },
 ];

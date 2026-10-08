@@ -22,6 +22,11 @@ As skills abaixo foram copiadas sem alteração dos repositórios de origem, sob
 | web-perf, wrangler | [cloudflare/skills](https://github.com/cloudflare/skills) | Apache-2.0 |
 | webapp-testing | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 |
 | competitor-profiling, customer-research | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | MIT |
+| gsap-core, gsap-scrolltrigger, gsap-timeline, gsap-plugins, gsap-react, gsap-performance | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) | MIT |
+| design-motion-principles | [kylezantos/design-motion-principles](https://github.com/kylezantos/design-motion-principles) | MIT |
+| lightweight-3d-effects, motion-framer, animated-component-libraries, modern-web-design | [freshtechbro/claudedesignskills](https://github.com/freshtechbro/claudedesignskills) | MIT |
+| motion-background, animation-principles | [iart-ai/motion-design-skills](https://github.com/iart-ai/motion-design-skills) | MIT |
+| motion-design | [lottiefiles/motion-design-skill](https://github.com/lottiefiles/motion-design-skill) | MIT |
 | hyperframes, hyperframes-core, hyperframes-cli, hyperframes-animation, hyperframes-keyframes, general-video, product-launch-video, motion-graphics, media-use | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | Apache-2.0 |
 
 ## Instaladas automaticamente (não redistribuídas)

@@ -71,7 +71,7 @@ Para cada variante:
 | Cor | tokens coerentes, acento contido, contraste AA |
 | Layout/espaço | hierarquia, respiro, quebra do esqueleto padrão, assimetria proposital |
 | Conversão | ação principal óbvia, CTA claro e fixo no mobile, prova real perto do CTA |
-| Movimento | adequado aos dials, só transform/opacity, reduced motion |
+| Movimento | cumpre o orçamento da skill `tchans` pra Energia da vibe (página parada = nota ≤ 4); tchans com fit; só transform/opacity/clip-path; reduced motion |
 | Copy | só fatos do `fatos.md`, voz do `voz.md`, zero clichê/estrutura de IA (skill `copy-sem-slop`); passe o teste do nome coberto |
 | Alma | dá pra reconhecer o negócio sem o logo? tem o "detalhe de dono"? |
 | Referências | o mapa de referências existe e cada item aparece de verdade na tela? (abra os dois screenshots lado a lado) |

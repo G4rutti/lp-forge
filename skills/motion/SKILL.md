@@ -19,7 +19,7 @@ Animação boa é a que ninguém percebe como "animação", só sente que a inte
 5. **Origem faz sentido**: popover cresce a partir do gatilho (`transform-origin`), não do centro.
 6. **Press feedback**: `:active { transform: translateY(1px) scale(.98) }` em 90ms. É a micro-interação com melhor custo-benefício.
 7. **Stagger** curto (30-60ms) e só em grupos de até ~8 itens.
-8. **Uma coreografia por página** (normalmente no hero). O resto quieto ou com reveal discreto em no máximo 2-3 seções.
+8. **Movimento proporcional à vibe, nunca zero.** Siga o orçamento da skill `tchans` (hero coreografado + momentos de scroll + micro-interação em todo CTA + 1 a 3 tchans conforme a Energia da `vibe.md`). O que evitar é fade-up genérico igual em todo bloco, não animação.
 9. **Reduced motion sempre**:
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -54,6 +54,7 @@ Animação boa é a que ninguém percebe como "animação", só sente que a inte
 ScrollTrigger com `scrub` pra hero pinado; sempre `gsap.matchMedia()` pra desligar em mobile/reduced motion.
 
 ## Fontes de animação prontas
+- Skills incluídas: `gsap-core`, `gsap-scrolltrigger`, `gsap-timeline`, `gsap-plugins` (SplitText, DrawSVG...), `gsap-react`, `gsap-performance` (oficiais da GreenSock), `motion-framer`, `design-motion-principles`, `animation-principles`, `motion-background` (gradiente/mesh animado), `lightweight-3d-effects` (Vanta, tilt), `motion-design` (Lottie), `animated-component-libraries`. Catálogo por vibe: skill `tchans`.
 - 21st.dev e OriginKit (MCPs do plugin) para componentes animados
 - transitions.dev para micro-transições copia-e-cola
 - Skills do Emil Kowalski já incluídas no plugin: `emil-design-eng` (filosofia e regras), `animation-vocabulary` (nome certo pra cada efeito), `find-animation-opportunities` (onde animar), `improve-animations` (melhorar o que existe), `review-animations` (auditar), `apple-design` (sensação Apple)

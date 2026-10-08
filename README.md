@@ -66,6 +66,7 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
 - `remotion-preview`: vídeo da prévia (HyperFrames por padrão, Remotion opcional)
+- `tchans`: orçamento mínimo de movimento pela Energia da vibe (hero coreografado, momentos de scroll, micro em todo CTA, 1-3 efeitos) e catálogo de efeitos com quando usar: gradiente da marca, mesh animado, reveal de texto, scroll pinado, marquee, contador, parallax, tilt, Vanta, Lottie, SVG que se desenha, botão magnético, Lenis
 - `vibe`: lê a vibe do negócio (energia, formalidade, era, tátil↔digital, densidade, ousadia) com evidência do DNA e das referências, e escolhe os componentes de cada seção no 21st, OriginKit e southleft conforme essa vibe; cada variante do leque ganha um hero diferente. Efeitos-assinatura (3D, polaroid, itálico de destaque) não são proibidos: entram com fit ≥ 8 na vibe e marcados `lp-forge: vibe-ok`
 - `referencias-do-ramo`: 3 scouts Haiku acham referências do nicho (galerias por categoria, mercado maior, concorrentes locais), `ref-capture.mjs` tira screenshot e extrai fontes/paleta/CTA, e o modelo principal escreve `referencias.md`. Fontes testadas em `references/fontes.md`
 - `copy-sem-slop`: copy em PT-BR sem vício de IA. Só fatos do `fatos.md` (com fonte e data), voz real do dono (`voz.md`), frases e estruturas proibidas ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"), antes/depois de LP local e nota de 5 dimensões
@@ -75,7 +76,8 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 |---|---|---|
 | Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `industrial-brutalist-ui`, `redesign-existing-projects`, `ui-ux-pro-max` | pbakaus, leonxlnx, nextlevelbuilder |
 | Revisão de UI | `web-design-guidelines`, `vercel-react-best-practices` | Vercel |
-| Animação | `emil-design-eng`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `apple-design`, `pick-ui-library` | Emil Kowalski |
+| Animação (GSAP oficial e cia.) | `gsap-core`, `gsap-scrolltrigger`, `gsap-timeline`, `gsap-plugins`, `gsap-react`, `gsap-performance`, `motion-framer`, `design-motion-principles`, `animation-principles`, `motion-background`, `lightweight-3d-effects`, `motion-design` (Lottie), `animated-component-libraries`, `modern-web-design` | GreenSock, Kyle Zantos, freshtechbro, iart-ai, LottieFiles |
+| Animação (Emil) | `emil-design-eng`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `apple-design`, `pick-ui-library` | Emil Kowalski |
 | Imagem / marca | `imagegen-frontend-web`, `image-to-code`, `brandkit` | leonxlnx |
 | Conversão / SEO / copy | `copywriting`, `copy-editing`, `cro`, `seo-audit`, `schema`, `marketing-psychology`, `stop-slop` (vícios de escrita de IA em inglês) | Corey Haines, Hardik Pandya |
 | Vídeo (HyperFrames) | `hyperframes`, `hyperframes-core`, `hyperframes-cli`, `hyperframes-animation`, `hyperframes-keyframes`, `product-launch-video` (tour de site a partir da URL), `motion-graphics`, `general-video`, `media-use` | HeyGen |
