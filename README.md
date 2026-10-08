@@ -43,9 +43,9 @@ Recomendado: **Claude Code**, onde o plugin funciona 100%. Pré-requisito: Node 
 
 ```
 brief.md + dna.md
-  ├─ variant-builder (haiku) · galeria-editorial ─┐
+  ├─ variant-builder (haiku) · foto-real-full-bleed ┐
   ├─ variant-builder (haiku) · print-tech         ├─► variantes/r1/  +  galeria (index.html lado a lado)
-  ├─ variant-builder (haiku) · quieto-clinico     │
+  ├─ variant-builder (haiku) · cor-chapada-da-marca │
   └─ variant-builder (haiku) · editorial-bruto  ──┘
         ▼
   modelo principal: slop-lint + screenshots 1440/390 + rubrica 7 dimensões
@@ -60,8 +60,8 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `anti-slop`: P0/P1/P2 de tells de IA, regra do "movimento ousado" + "detalhe de dono", QC pre-flight, tabela de trocas
 - `design-brief`: 4 inputs (estética, referência, intenção, guardrails) + dials variância/movimento/densidade
 - `brand-dna`: DNA do lead via Insta + avaliações do Google + site atual
-- `repertorio`: 8 famílias visuais com tokens OKLCH, fontes e movimento prontos (inclui `galeria-editorial`, a da foto de referência) + onde garimpar referência
-- `motion`: durações, easings, o que nunca animar, receitas CSS/Motion/GSAP, nuvem 3D de imagens
+- `repertorio`: 8 famílias de estrutura e movimento (cor vem do DNA, fonte de um pool rotativo com histórico entre projetos) + onde garimpar referência
+- `motion`: durações, easings, o que nunca animar, receitas CSS/Motion/GSAP
 - `component-sourcing`: ordem de uso dos MCPs e adaptação obrigatória de componente importado
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
@@ -69,10 +69,10 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `referencias-do-ramo`: 3 scouts Haiku acham referências do nicho (galerias por categoria, mercado maior, concorrentes locais), `ref-capture.mjs` tira screenshot e extrai fontes/paleta/CTA, e o modelo principal escreve `referencias.md`. Fontes testadas em `references/fontes.md`
 - `copy-sem-slop`: copy em PT-BR sem vício de IA. Só fatos do `fatos.md` (com fonte e data), voz real do dono (`voz.md`), frases e estruturas proibidas ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"), antes/depois de LP local e nota de 5 dimensões
 
-**Skills de terceiros já incluídas** (71, vêm junto no plugin, nada pra instalar à parte)
+**Skills de terceiros já incluídas** (69, vêm junto no plugin, nada pra instalar à parte)
 | Área | Skills | Origem |
 |---|---|---|
-| Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects`, `frontend-design`, `ui-ux-pro-max` | pbakaus, leonxlnx, Anthropic, nextlevelbuilder |
+| Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `industrial-brutalist-ui`, `redesign-existing-projects`, `ui-ux-pro-max` | pbakaus, leonxlnx, nextlevelbuilder |
 | Revisão de UI | `web-design-guidelines`, `vercel-react-best-practices` | Vercel |
 | Animação | `emil-design-eng`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `apple-design`, `pick-ui-library` | Emil Kowalski |
 | Imagem / marca | `imagegen-frontend-web`, `image-to-code`, `brandkit` | leonxlnx |

@@ -8,10 +8,9 @@ import { execFileSync } from "node:child_process";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..");
 const SOURCES = [
-  { repo: "anthropics/skills", license: "skills/frontend-design/LICENSE.txt", map: { "skills/frontend-design": "frontend-design" } },
   { repo: "vercel-labs/agent-skills", license: null, map: { "skills/web-design-guidelines": "web-design-guidelines", "skills/react-best-practices": "vercel-react-best-practices" } },
   { repo: "vercel-labs/agent-browser", license: "LICENSE", map: { "skills/agent-browser": "agent-browser" } },
-  { repo: "leonxlnx/taste-skill", license: "LICENSE", map: { "skills/taste-skill": "design-taste-frontend", "skills/redesign-skill": "redesign-existing-projects", "skills/soft-skill": "high-end-visual-design", "skills/minimalist-skill": "minimalist-ui", "skills/brutalist-skill": "industrial-brutalist-ui", "skills/imagegen-frontend-web": "imagegen-frontend-web", "skills/image-to-code-skill": "image-to-code", "skills/brandkit": "brandkit" } },
+  { repo: "leonxlnx/taste-skill", license: "LICENSE", map: { "skills/taste-skill": "design-taste-frontend", "skills/redesign-skill": "redesign-existing-projects", "skills/soft-skill": "high-end-visual-design", "skills/brutalist-skill": "industrial-brutalist-ui", "skills/imagegen-frontend-web": "imagegen-frontend-web", "skills/image-to-code-skill": "image-to-code", "skills/brandkit": "brandkit" } },
   { repo: "emilkowalski/skills", license: "LICENSE", map: Object.fromEntries(["emil-design-eng", "review-animations", "improve-animations", "animation-vocabulary", "find-animation-opportunities", "apple-design", "pick-ui-library"].map((s) => [`skills/${s}`, s])) },
   { repo: "pbakaus/impeccable", license: "LICENSE", map: { "plugin/skills/impeccable": "impeccable" } },
   { repo: "nextlevelbuilder/ui-ux-pro-max-skill", license: "LICENSE", map: { ".claude/skills/ui-ux-pro-max": "ui-ux-pro-max" } },

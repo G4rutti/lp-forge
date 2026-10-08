@@ -20,10 +20,11 @@ Gere `brief.md` na raiz do projeto ANTES de qualquer código. Todo subagente lê
 - Modo: marca | produto
 
 ## 1. Estética
-- Família visual: (ver skill repertorio, ex. galeria-editorial)
+- Família visual: (ver skill repertorio, ex. cor-chapada-da-marca)
 - Dials: variância __/10 · movimento __/10 · densidade __/10
 - Fonte display: ____ · Fonte texto: ____
-- Tokens: --bg, --fg, --muted, --accent, --line (OKLCH)
+- Tokens: --bg, --fg, --muted, --accent, --line (OKLCH). Origem de CADA cor: "logo", "fachada", "uniforme", "ref: <site>". Fundo bege/creme proibido salvo prova no DNA
+- Fontes: do pool `repertorio/references/fontes.md`, fora do histórico (`historico.mjs fontes`)
 - Raio: __ · Movimento ousado: ____
 
 ## 2. Referência (combinar a sensação, não copiar; vem de `referencias.md`, skill `referencias-do-ramo`)

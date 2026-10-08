@@ -4,10 +4,9 @@ As skills abaixo foram copiadas sem alteração dos repositórios de origem, sob
 
 | Skill(s) | Origem | Licença |
 |---|---|---|
-| frontend-design | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 |
 | web-design-guidelines, vercel-react-best-practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | MIT |
 | agent-browser | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) | Apache-2.0 |
-| design-taste-frontend, redesign-existing-projects, high-end-visual-design, minimalist-ui, industrial-brutalist-ui, imagegen-frontend-web, image-to-code, brandkit | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT |
+| design-taste-frontend, redesign-existing-projects, high-end-visual-design, industrial-brutalist-ui, imagegen-frontend-web, image-to-code, brandkit | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) | MIT |
 | emil-design-eng, review-animations, improve-animations, animation-vocabulary, find-animation-opportunities, apple-design, pick-ui-library | [emilkowalski/skills](https://github.com/emilkowalski/skills) | MIT |
 | impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 |
 | ui-ux-pro-max | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT |

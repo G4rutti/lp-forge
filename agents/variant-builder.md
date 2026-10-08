@@ -14,7 +14,8 @@ O prompt traz: rodada, nome da variante, pasta de saída, caminho do `brief.md` 
 ## Antes de escrever
 1. Leia `brief.md`, `dna.md` e `referencias.md` (se houver) e olhe 2-3 screenshots de `referencias/` que combinam com a sua direção. Pegue a sensação, nunca o layout.
 2. Leia as regras: `${CLAUDE_PLUGIN_ROOT}/skills/anti-slop/SKILL.md` e a sua família em `${CLAUDE_PLUGIN_ROOT}/skills/repertorio/references/familias.md`. Para animação, `${CLAUDE_PLUGIN_ROOT}/skills/motion/SKILL.md`.
-3. Escreva em 5 linhas no topo do `notes.md`: fonte display/texto, tokens, o movimento ousado, a seção fora do padrão, o detalhe de dono.
+3. Escreva no topo do `notes.md`: fonte display/texto (do pool `repertorio/references/fontes.md`, fora da lista "NÃO repetir" que veio no prompt), tokens com a ORIGEM de cada cor (logo/fachada/uniforme/ref), o movimento ousado, a seção fora do padrão, o detalhe de dono.
+4. **Mapa de referências (obrigatório se existir `referencias.md`)**: tabela `| Seção | Referência (site) | O que foi pego (concreto: proporção, tratamento de foto, como mostra preço/horário, ordem das seções) |`, no mínimo 3 linhas, de pelo menos 2 sites diferentes. Abra os screenshots em `referencias/` antes. Sem mapa, a variante é descartada.
 
 ## Copy antes do layout
 1. Leia `fatos.md` e `voz.md` (se existirem) e `${CLAUDE_PLUGIN_ROOT}/skills/copy-sem-slop/SKILL.md` + `references/estruturas-pt.md`.
@@ -32,7 +33,7 @@ O prompt traz: rodada, nome da variante, pasta de saída, caminho do `brief.md` 
 
 ## Antes de devolver
 1. Rode `node "${CLAUDE_PLUGIN_ROOT}/scripts/slop-lint.mjs" <pasta-de-saída>` e corrija TODO P0. Rode de novo.
-2. Releia o HTML procurando tells que o lint não pega: grid de 3 cards iguais, card dentro de card, badge pílula no hero, acento demais, ícone emoji.
+2. Releia o HTML procurando tells que o lint não pega: grid de 3 cards iguais, card dentro de card, badge pílula no hero, acento demais, ícone emoji, fundo bege, fotos inclinadas, palavra do H1 em itálico colorido. Confira que cada linha do mapa de referências está de fato na página.
 
 ## Resposta final (curta, é lida pelo modelo principal)
 ```
@@ -42,6 +43,7 @@ fontes: <display> / <texto>
 ousadia: <1 linha>
 fora-do-padrão: <1 linha>
 lint: P0=0 P1=<n> (página) · copy P1=<n>
+referências aplicadas: <n linhas no mapa, sites usados>
 pontos fracos que eu sei: <até 3 bullets honestos>
 ```
 Não cole o HTML na resposta.

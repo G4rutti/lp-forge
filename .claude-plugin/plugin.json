@@ -1,6 +1,6 @@
 {
   "name": "lp-forge",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Forja de landing pages anti-AI-slop com ~80 skills incluídas (Impeccable, Taste, Emil Kowalski, HyperFrames, UI UX Pro Max, Vercel, web-quality, claude-seo, stop-slop, marketing), pesquisa de referências do ramo, validador independente e copy PT-BR sem slop: brief em 4 inputs, fatos e voz do dono, DNA de marca, 3-5 subagentes Haiku gerando variantes em paralelo, auditoria do modelo principal, lint de slop, checklist de lançamento e MCPs de componentes (21st, OriginKit, shadcn).",
   "author": {
     "name": "Davi Garutti",

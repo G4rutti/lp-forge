@@ -66,4 +66,4 @@ Nada entra sem fonte. O que você não sabe fica como `[DADO REAL: ...]` e vira 
 Leia 5-10 textos escritos pelo próprio dono (legendas, respostas a avaliações, bio, mensagens) e escreva um perfil de 3-5 parágrafos: como abre e fecha, pessoa do discurso ("a gente", "nós", "eu"), formalidade, gírias e expressões que repete, emojis, tamanho médio das frases, palavras que ele NUNCA usaria. Cite 3-5 frases reais curtas como amostra. A copy imita esse perfil, não um "tom profissional" genérico.
 
 ## Depois
-Passe o `dna.md` para a skill `design-brief`. Família visual sugerida a partir do DNA: clínica de estética → `quieto-clinico` ou `galeria-editorial`; barbearia → `print-tech` ou `editorial-bruto`; corretor premium → `editorial-classico`.
+Passe o `dna.md` para a skill `design-brief`. Família visual sugerida a partir do DNA: escola/clínica → `institucional-limpo`, `foto-real-full-bleed` ou `cor-chapada-da-marca`; barbearia/academia → `print-tech` ou `editorial-bruto`; corretor/advocacia → `editorial-revista`. Anote no `dna.md` as cores REAIS da marca (logo, fachada, uniforme): elas viram a paleta.

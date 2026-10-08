@@ -5,26 +5,17 @@ description: Biblioteca de famílias visuais (com tokens, fontes, layout e movim
 
 # Repertório
 
-O problema raramente é o modelo; é falta de repertório. Esta skill dá nomes e vocabulário para estilos, porque **nomear é poder**: "galeria-editorial, variância 8" gera algo muito mais específico que "moderno e elegante".
+O problema raramente é o modelo; é falta de repertório. Esta skill dá nomes e vocabulário para estilos, porque **nomear é poder**: "cor-chapada-da-marca, variância 7, display condensada" gera algo muito mais específico que "moderno e elegante".
 
 ## Como usar
 1. Escolha 1 família para página única, ou 3-5 famílias DIFERENTES para o leque de variantes (ver `variant-fanout`).
-2. Copie os tokens da família para o `brief.md` e ajuste a matiz pelo DNA da marca.
+2. Tokens NÃO vêm da família: cor do DNA da marca/referências, fonte do pool sem repetir o histórico.
 3. Referências do usuário (prints, URLs) entram como "sensação a combinar", nunca para copiar layout pixel a pixel.
 
 Famílias completas: `references/familias.md`.
 Onde garimpar referência: `references/fontes-de-referencia.md`.
 
-## Resumo das famílias
-| Família | Sensação | Bom pra |
-|---|---|---|
-| `galeria-editorial` | serif itálica grande, off-white, cards de imagem flutuando em perspectiva | estúdio, estética premium, fotógrafo, arquitetura |
-| `editorial-classico` | revista, colunas, filetes, serif + grotesca | corretor premium, advocacia, consultório |
-| `quieto-clinico` | muito respiro, neutros quentes, 1 acento suave | clínica, estética, saúde |
-| `print-tech` | grid aparente, mono, labels técnicas, cor de sinalização | barbearia moderna, oficina, tech local |
-| `dither-mono` | monocromático, textura de pontilhado, imagens tratadas | marca jovem, música, moda |
-| `editorial-bruto` | tipografia gigante, contraste duro, bordas cheias | academia, barbearia, evento |
-| `organico-quente` | tons terrosos, formas suaves (não blobs aleatórios), foto de textura | café, padaria, pet, terapias |
-| `produto-denso` | denso, tabular, sem cards, divisões por linha | SaaS, dashboard, B2B |
+## Famílias (só estrutura e movimento; cor = DNA/referências; fonte = pool + histórico)
+`foto-real-full-bleed`, `institucional-limpo`, `cor-chapada-da-marca`, `editorial-revista`, `print-tech`, `editorial-bruto`, `produto-denso`, `mapa-e-bairro`. Detalhes em `references/familias.md`. Pool de fontes: `references/fontes.md`.
 
-Para o leque, combine famílias com **contraste real** entre si (ex.: galeria-editorial + print-tech + quieto-clinico), senão as variantes saem iguais.
+Antes de distribuir direções, rode `node "${CLAUDE_PLUGIN_ROOT}/scripts/historico.mjs" fontes` e passe a lista do que NÃO repetir pra cada builder.

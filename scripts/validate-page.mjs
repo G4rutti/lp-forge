@@ -83,6 +83,7 @@ async function run(vp, label) {
       ld,
       placeholders: (text.match(/\[DADO REAL[^\]]*\]|lorem ipsum/gi) || []).length,
       smallTargets: small,
+      squeezed: [...document.querySelectorAll("p, li, td, span, div")].filter((e) => { if (!vis(e) || e.children.length > 2) return false; const t = e.textContent.trim(); if (t.length < 25) return false; const r = e.getBoundingClientRect(); const lh = parseFloat(getComputedStyle(e).lineHeight) || 20; return r.width < 130 && r.height / lh >= 4; }).slice(0, 5).map((e) => e.textContent.trim().slice(0, 40)),
       reducedMotion: [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => r.media && /prefers-reduced-motion/.test(r.media.mediaText)); } catch { return false; } }),
     };
   });
@@ -115,6 +116,7 @@ gate("img-dimensoes", D.noDims === 0, `${D.noDims} imagem(ns) sem width/height o
 gate("sem-placeholder", D.placeholders === 0, `${D.placeholders} [DADO REAL]/lorem visível`, !flag("--preview"));
 gate("console-limpo", D.errors.length === 0 && M.errors.length === 0, [...D.errors, ...M.errors].slice(0, 3).join(" | ") || "ok", false);
 gate("tap-targets", M.smallTargets === 0, `${M.smallTargets} alvo(s) de toque < 40px no mobile`, false);
+gate("texto-espremido", D.squeezed.length === 0 && M.squeezed.length === 0, [...D.squeezed, ...M.squeezed].slice(0, 3).map((t) => `"${t}…"`).join(" ") || "ok");
 gate("reduced-motion", D.reducedMotion, D.reducedMotion ? "ok" : "sem @media (prefers-reduced-motion)", false);
 
 const fails = gates.filter((g) => !g.ok);

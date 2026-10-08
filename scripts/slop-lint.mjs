@@ -54,7 +54,36 @@ function visibleText(src, f) {
   return s.replace(/\[DADO REAL:[^\]]*\]/gi, (m) => blank(m));
 }
 
+
+// ---------- bege / fonte batida / componentes repetidos ----------
+function hexToHsl(hex) {
+  let h = hex.replace("#", ""); if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2; let s = 0, hu = 0;
+  if (mx !== mn) { const d = mx - mn; s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn); hu = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; hu *= 60; }
+  return { h: hu, s: s * 100, l: l * 100 };
+}
+function isBeige(v) {
+  v = v.trim();
+  let m = v.match(/^#([0-9a-f]{3}|[0-9a-f]{6})\b/i);
+  if (m) { const c = hexToHsl(m[0]); return c.l >= 88 && c.l < 99 && c.s >= 12 && c.h >= 20 && c.h <= 65; }
+  m = v.match(/oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)/i);
+  if (m) { const L = m[2] ? +m[1] / 100 : +m[1]; return L >= 0.9 && +m[3] >= 0.006 && +m[3] <= 0.06 && +m[4] >= 40 && +m[4] <= 110; }
+  m = v.match(/hsla?\(\s*([\d.]+)[\s,]+([\d.]+)%[\s,]+([\d.]+)%/i);
+  if (m) return +m[3] >= 88 && +m[3] < 99 && +m[2] >= 12 && +m[1] >= 20 && +m[1] <= 65;
+  m = v.match(/rgba?\(\s*(\d+)[\s,]+(\d+)[\s,]+(\d+)/i);
+  if (m) { const hx = "#" + [m[1], m[2], m[3]].map((x) => (+x).toString(16).padStart(2, "0")).join(""); return isBeige(hx); }
+  return false;
+}
+const CEMITERIO = "Fraunces|Instrument Serif|Playfair Display|DM Serif Display|Cormorant(?: Garamond)?|Libre Caslon(?: Display| Text)?|Gloock|Young Serif|Poppins|Montserrat|Space Grotesk|Syne";
+
 const rules = [
+  // bege, fonte batida e componentes que viraram assinatura de IA
+  { id: "fundo-bege", sev: "P0", msg: "Fundo bege/creme/off-white quente (o padrão de IA). Cor de fundo vem do DNA da marca ou das referências", test: (s) => { if (/lp-forge:\s*bege-aprovado/.test(s)) return []; const out = []; const re = /(?:--(?:bg|background|paper|surface|base|cream|canvas)[\w-]*|background(?:-color)?)\s*:\s*([^;}{]+)/gi; let m; while ((m = re.exec(s)) && out.length < 5) if (m[1].split(/[\s,]+(?=#|oklch|rgb|hsl)/).some(isBeige)) out.push({ line: s.slice(0, m.index).split("\n").length, match: m[0].slice(0, 70) }); return out.concat(findAll(s, /\bbg-(?:amber|orange|stone|yellow)-(?:50|100)\b|\bbg-\[#(?:f[5-9a-f][e-f0-9][0-9a-f]{3}|faf[0-9a-f]{3})\]/gi).slice(0, 3)); } },
+  { id: "fonte-cemiterio", sev: "P0", msg: "Fonte que todo modelo escolhe (Fraunces, Instrument Serif, Playfair, DM Serif, Cormorant, Poppins, Montserrat...). Use o pool de repertorio/references/fontes.md; se é a fonte REAL da marca, comente lp-forge: fonte-aprovada", test: (s) => /lp-forge:\s*fonte-aprovada/.test(s) ? [] : findAll(s, new RegExp(`family=(?:${CEMITERIO.replace(/ /g, "\\+")})(?![\\w+])|font-family\\s*:\\s*['"]?(?:${CEMITERIO})['"]?`, "gi")).slice(0, 3) },
+  { id: "fotos-inclinadas", sev: "P0", msg: "Colagem de fotos inclinadas/polaroid (componente repetido em toda LP gerada). Use foto real em grid reto ou full-bleed", test: (s) => { const m = findAll(s, /rotate\(\s*-?(?:[1-9]\d*(?:\.\d+)?|0?\.[5-9]\d*)deg\s*\)|--(?:rot|tilt|r)\s*:\s*-?[1-9][\d.]*deg|\b-?rotate-(?:1|2|3|6|12)\b/g); return m.length >= 3 ? [{ line: m[0].line, match: `${m.length} elementos rotacionados` }] : []; } },
+  { id: "legenda-manuscrita", sev: "P0", msg: "Fonte manuscrita em legenda de foto (tique de 'álbum de fotos' de IA)", test: (s) => findAll(s, /family=(?:Caveat|Homemade\+Apple|Reenie\+Beanie|Kalam|Shadows\+Into\+Light|Gochi\+Hand|Nanum\+Pen\+Script|Patrick\+Hand|Indie\+Flower|Gloria\+Hallelujah)|font-family\s*:\s*['"]?(?:Caveat|Homemade Apple|Reenie Beanie|Kalam|Shadows Into Light|Gochi Hand|Nanum Pen Script|Patrick Hand|Indie Flower|Gloria Hallelujah)/gi).slice(0, 2) },
+  { id: "h1-italico-colorido", sev: "P0", msg: "H1 com a última palavra em itálico/cor de destaque (assinatura de IA). Hierarquia por tamanho/peso, não por itálico colorido", test: (s) => findAll(s, /<h1\b[^>]*>(?:(?!<\/h1>)[\s\S]){0,400}?<(?:em|i)\b[^>]*>(?:(?!<\/h1>)[\s\S]){0,120}?<\/(?:em|i)>\s*[.!]?\s*(?:<\/span>\s*)?<\/h1>/gi).slice(0, 2) },
   // copy PT-BR (rodam só no texto visível)
   { id: "copy-cliche-pt", kind: "copy", sev: "P0", msg: "Frase-clichê de IA em PT-BR (ver copy-sem-slop/references/frases-pt.md)", test: (t) => findAll(t, L(BANNED_PT.join("|"))) },
   { id: "copy-contraste", kind: "copy", sev: "P0", msg: "Contraste binário de IA ('não é X, é Y', 'mais que um X, um Y', 'não só X mas Y') - diga Y direto", test: (t) => findAll(t, L("não (?:é|são|foi|era|se trata de)\\s+(?:só |apenas |sobre )?[^.!?\\n]{1,60}?[,.;]\\s*(?:é|são|mas|e sim)|não se trata de|mais (?:do )?que (?:um|uma|apenas|só|simplesmente)\\s[^.!?\\n]{1,50}?[,:]\\s*(?:um|uma|é)|não (?:só|apenas|somente)\\s[^.!?\\n]{1,60}?\\s(?:mas|como também)|não precisa(?:m)? de\\s[^.!?\\n]{1,50}?,\\s*precisa")) },
@@ -83,7 +112,7 @@ const rules = [
   { id: "generic-cta", kind: "code", sev: "P1", msg: "CTA genérico ('Saiba mais', 'Get started', 'Começar')", test: (s) => findAll(s, />\s*(Saiba mais|Get started|Learn more|Começar agora|Comece agora|Clique aqui)\s*</gi) },
   { id: "ai-copy", kind: "copy", sev: "P1", msg: "Frase-clichê de IA na copy (EN)", test: (s) => findAll(s, /\b(unlock the power|elevate your|seamless(ly)?|game[- ]changer|cutting[- ]edge|next[- ]level|supercharge)\b/gi) },
   { id: "raw-hex", sev: "P1", msg: "Muitos hex soltos fora de :root (>12) - use tokens", test: (s, f) => { const body = s.replace(/:root\s*\{[^}]*\}/g, ""); const m = findAll(body, /#[0-9a-f]{6}\b|#[0-9a-f]{3}\b(?![0-9a-f])/gi); return m.length > 12 ? [{ line: m[12].line, match: `${m.length} hex soltos` }] : []; } },
-  { id: "pure-bw", sev: "P1", msg: "Preto/branco puro como fundo/texto (tinja os neutros)", test: (s) => findAll(s, /(?:background(?:-color)?|color)\s*:\s*(?:#000(?:000)?|#fff(?:fff)?|black|white)\s*[;}]/gi) },
+  { id: "pure-black", sev: "P1", msg: "Preto puro como fundo/texto (use quase-preto na matiz da marca)", test: (s) => findAll(s, /(?:background(?:-color)?|color)\s*:\s*(?:#000(?:000)?|black)\s*[;}]/gi) },
   { id: "three-cards", sev: "P1", msg: "Grid de 3 colunas (provável trio de cards genérico) - varie", test: (s) => findAll(s, /\bmd:grid-cols-3\b|\blg:grid-cols-3\b|grid-template-columns\s*:\s*repeat\(\s*3\s*,\s*1fr\s*\)/g).slice(0, 1) },
   { id: "bounce", sev: "P1", msg: "Animação bounce/elastic", test: (s) => findAll(s, /\banimate-bounce\b|cubic-bezier\(\s*0?\.\d+\s*,\s*-?\d*\.?\d+\s*,\s*0?\.\d+\s*,\s*1\.[3-9]\d*\s*\)|easeOutBounce|easeOutElastic/g) },
   // P2

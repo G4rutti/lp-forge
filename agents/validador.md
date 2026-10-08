@@ -16,7 +16,9 @@ Caminho da página (pasta com `index.html`, arquivo ou URL publicada), se é `pr
 3. **Fatos**: liste TODA afirmação verificável da página (números, notas, nº de avaliações, horários, endereço, preços, anos, nomes, depoimentos). Para cada uma, ache a linha correspondente em `fatos.md`. Afirmação sem linha = **REPROVA** (é invenção, mesmo que pareça plausível). Depoimento precisa ser texto real com fonte.
 4. **Visual**: abra os screenshots `qa/*-desktop.png` e `qa/*-mobile.png` e olhe de verdade. Procure os tells da skill `anti-slop` (grid de 3 cards iguais, card dentro de card, badge pílula, gradiente roxo, acento demais, tudo centralizado) e problemas de leitura (texto sobre foto sem contraste, CTA escondido, hero que não diz o que o negócio faz em 3 segundos).
 5. **Copy**: passe o teste do nome coberto da skill `copy-sem-slop`. Cite as frases que serviriam pra qualquer concorrente.
-6. **Checklist**: `${CLAUDE_PLUGIN_ROOT}/skills/anti-slop/references/qc-checklist.md`, item por item, marcando só o que você conferiu.
+6. **Referências**: se existe `referencias.md`, ache o mapa de referências (`notes.md` da variante/`final/`). Para cada linha, abra o screenshot da referência em `referencias/` e o da página em `qa/` e confirme que o item está aplicado. Sem mapa, ou com menos de 2 itens visíveis de fato = **REPROVA**.
+7. **Repetição**: `node "${CLAUDE_PLUGIN_ROOT}/scripts/historico.mjs" checar <página>`. Exit 1 = **REPROVA** (display, fundo ou padrão igual a um projeto recente).
+8. **Checklist**: `${CLAUDE_PLUGIN_ROOT}/skills/anti-slop/references/qc-checklist.md`, item por item, marcando só o que você conferiu.
 
 ## Saída
 ```
@@ -30,6 +32,8 @@ Caminho da página (pasta com `index.html`, arquivo ou URL publicada), se é `pr
 | Fatos | PASS/FAIL | <n> afirmações, <n> sem fonte: "<frase>" … |
 | Visual | PASS/FAIL | <o que viu, com seção> |
 | Copy | PASS/FAIL | <frases genéricas> |
+| Referências | PASS/FAIL | <itens do mapa vistos/ausentes> |
+| Repetição | PASS/FAIL | <saída do historico checar> |
 | Checklist | <n>/<total> | <itens falhando> |
 
 ## Bloqueios (corrigir antes de mandar)
@@ -38,4 +42,4 @@ Caminho da página (pasta com `index.html`, arquivo ou URL publicada), se é `pr
 ## Avisos (não bloqueiam)
 - ...
 ```
-Salve também em `qa/validacao.md`. Não edite a página. Se não conseguiu rodar algum portão, diga qual e por quê; portão não rodado não conta como PASS.
+Salve também em `qa/validacao.md`. Não edite a página. Se o modo for `final` e o resultado APROVADO, rode `node "${CLAUDE_PLUGIN_ROOT}/scripts/historico.mjs" registrar <página>` pra que o próximo projeto não repita esta. Se não conseguiu rodar algum portão, diga qual e por quê; portão não rodado não conta como PASS.

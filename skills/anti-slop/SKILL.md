@@ -19,6 +19,11 @@ Antes de escrever código, responda por escrito (no plano ou no `brief.md`):
 Se não dá pra responder 5 e 6, falta informação: busque no DNA da marca (skill `brand-dna`) antes de inventar.
 
 ## P0: pecados capitais (bloqueiam entrega)
+- **Fundo bege/creme/off-white quente** como base da página. É o padrão nº 1 de LP gerada. Fundo vem da cor da marca (DNA) ou das referências; neutro, só branco/cinza frio ou a cor da marca bem clara.
+- **Fonte do cemitério** como display (Fraunces, Instrument Serif, Playfair, DM Serif, Cormorant, Libre Caslon, Gloock, Poppins, Montserrat, Space Grotesk, Syne). Pool e rotação em `repertorio/references/fontes.md` + `scripts/historico.mjs`.
+- **H1 com a última palavra em itálico colorido** ("há *40 anos.*").
+- **Colagem de fotos inclinadas tipo polaroid**, com ou sem legenda manuscrita.
+- **Repetir** display, fundo ou padrão de um dos últimos 5 projetos (`historico.mjs checar`).
 - Acento índigo/roxo padrão (`#6366f1 #4f46e5 #4338ca #3730a3 #8b5cf6 #7c3aed #a855f7` e parentes). Use o token `--accent` do brief.
 - Gradiente "confiança" de hero: roxo→azul, azul→ciano, índigo→rosa. Superfície chapada + tipografia forte ganha.
 - Emoji como ícone em `h1-h6`, botão, `li` ou `.icon`. Use SVG monoline (stroke 1.5-1.8, `currentColor`), Lucide/Phosphor/Tabler.
@@ -56,7 +61,7 @@ Layout bom com texto genérico continua parecendo IA. Toda copy segue a skill `c
 80% padrões comprovados (legibilidade, hierarquia, CTA claro), 20% decisões distintas. Teste final: alguém de fora reconhece de qual negócio é o print sem ler o logo? Se não, falta alma.
 
 ## Ferramentas
-- Skills incluídas no plugin que complementam esta: `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`, `quieter`, `typeset`...), `design-taste-frontend` (dials de variância/movimento/densidade), `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects` (pra site que já existe), `web-design-guidelines` (revisão Vercel de a11y/UX em `file:line`), `frontend-design` (Anthropic).
+- Skills incluídas no plugin que complementam esta: `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`, `quieter`, `typeset`...), `design-taste-frontend` (dials de variância/movimento/densidade), `high-end-visual-design`, `industrial-brutalist-ui`, `redesign-existing-projects` (pra site que já existe), `web-design-guidelines` (revisão Vercel de a11y/UX em `file:line`).
 - Rode `node "${CLAUDE_PLUGIN_ROOT}/scripts/slop-lint.mjs" <arquivo-ou-pasta>` antes de dizer que terminou. P0 = não entrega.
 - Checklist completo de QA: `references/qc-checklist.md`.
 - Tabela de troca rápida (o que a IA faz → o que fazer): `references/trocas.md`.

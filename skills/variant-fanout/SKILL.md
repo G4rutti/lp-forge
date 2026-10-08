@@ -31,6 +31,12 @@ brief.md + dna.md
 - Escopo: página inteira ou só uma seção (hero, pricing...). Para hero, a regra é: 5 estilos → escolhe 1 → 3 variações dentro dele → 1 vencedor.
 
 ### 1. Distribuir direções
+Antes: `node "${CLAUDE_PLUGIN_ROOT}/scripts/historico.mjs" fontes` → lista do que NÃO repetir (displays, fundos, padrões dos últimos projetos). Regras do leque (`repertorio/references/familias.md`):
+- cada variante com família diferente E display de categoria diferente (serif / grotesk / condensada / humanista / mono), nenhuma do cemitério nem do histórico; escreva a fonte de cada uma no prompt, não deixe o Haiku escolher;
+- paleta de cada variante sai do DNA (cores reais da marca); pelo menos 1 variante usa a cor da marca como fundo de seção inteira; nenhuma com fundo bege/creme;
+- pelo menos 1 variante é "a referência mais forte do `referencias.md` traduzida pro cliente";
+- cada prompt lista 2-3 referências (site + screenshot em `referencias/`) que aquela variante DEVE aplicar.
+
 Escolha N famílias **contrastantes** da skill `repertorio` (ou N interpretações bem distintas de uma família, se o usuário já escolheu a família). Para cada uma, escreva uma direção de 4-6 linhas: família, dials, fonte display, ousadia específica, seção fora do padrão que ela deve ter.
 
 ### 2. Disparar em paralelo
@@ -67,9 +73,13 @@ Para cada variante:
 | Movimento | adequado aos dials, só transform/opacity, reduced motion |
 | Copy | só fatos do `fatos.md`, voz do `voz.md`, zero clichê/estrutura de IA (skill `copy-sem-slop`); passe o teste do nome coberto |
 | Alma | dá pra reconhecer o negócio sem o logo? tem o "detalhe de dono"? |
+| Referências | o mapa de referências existe e cada item aparece de verdade na tela? (abra os dois screenshots lado a lado) |
+| Repetição (penalidade) | −3 se a display, o fundo ou um padrão (fotos inclinadas, H1 itálico) repetir o histórico ou outra variante |
 | Slop (penalidade) | −2 por P0, −0.5 por P1 do lint/inspeção |
 
 Complementos de auditoria (skills incluídas): rode `/impeccable audit` na vencedora provável e `web-design-guidelines` no HTML dela; some os achados à tabela. Para revisar só a animação, `review-animations`.
+
+Variante com nota de Referências < 6 ou com penalidade de Repetição **não pode vencer**, mesmo com nota total maior. Não escolha a vencedora pela fonte "mais bonita"; escolha pela que mais parece aquele negócio + aplica as referências.
 
 Monte a tabela comparativa e escolha: **1 vencedora + até 3 enxertos** (ex.: "hero da v2, prova social da v4, footer da v1").
 

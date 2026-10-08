@@ -1,6 +1,6 @@
 ---
 name: motion
-description: Regras de animação e micro-interação para front-end (durações, easing, o que animar, o que nunca animar, reduced motion, receitas em CSS, Motion/Framer e GSAP). Use ao adicionar qualquer animação, transição, hover, scroll effect ou ao polir o "feel" de uma página.
+description: Regras de animação e micro-interação para front-end (durações, easing, o que animar, o que nunca animar, reduced motion, receitas em CSS, Motion/Framer e GSAP; nada de fotos inclinadas/polaroid). Use ao adicionar qualquer animação, transição, hover, scroll effect ou ao polir o "feel" de uma página.
 ---
 
 # Motion
@@ -34,15 +34,6 @@ Animação boa é a que ninguém percebe como "animação", só sente que a inte
 .card { transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s cubic-bezier(.2,.8,.2,1); }
 .card:hover { transform: translateY(-3px); }
 ```
-
-### Nuvem 3D de imagens (galeria-editorial), entrada
-```css
-.cloud { perspective: 1200px; }
-.cloud img { opacity: 0; transform: rotateY(-18deg) rotateX(6deg) translateZ(-200px);
-  animation: in .7s cubic-bezier(.16,1,.3,1) forwards; animation-delay: calc(var(--i) * 60ms); }
-@keyframes in { to { opacity: 1; transform: rotateY(-18deg) rotateX(6deg) translateZ(var(--z, 0px)); } }
-```
-Parallax de mouse: atualize `--mx/--my` com `requestAnimationFrame`, limite a 12px, desligue em `pointer: coarse` e em reduced motion.
 
 ### Scroll-driven sem JS (navegadores modernos)
 ```css
