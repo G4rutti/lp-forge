@@ -69,6 +69,8 @@ Para cada variante:
 | Alma | dá pra reconhecer o negócio sem o logo? tem o "detalhe de dono"? |
 | Slop (penalidade) | −2 por P0, −0.5 por P1 do lint/inspeção |
 
+Complementos de auditoria (skills incluídas): rode `/impeccable audit` na vencedora provável e `web-design-guidelines` no HTML dela; some os achados à tabela. Para revisar só a animação, `review-animations`.
+
 Monte a tabela comparativa e escolha: **1 vencedora + até 3 enxertos** (ex.: "hero da v2, prova social da v4, footer da v1").
 
 ### 5. Rodada 2 (modelo principal escreve)

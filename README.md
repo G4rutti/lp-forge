@@ -54,7 +54,7 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 
 ## O que tem dentro
 
-**Skills** (o Claude puxa sozinho quando precisa)
+**Skills próprias do lp-forge** (o Claude puxa sozinho quando precisa)
 - `anti-slop`: P0/P1/P2 de tells de IA, regra do "movimento ousado" + "detalhe de dono", QC pre-flight, tabela de trocas
 - `design-brief`: 4 inputs (estética, referência, intenção, guardrails) + dials variância/movimento/densidade
 - `brand-dna`: DNA do lead via Insta + avaliações do Google + site atual
@@ -63,11 +63,26 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `component-sourcing`: ordem de uso dos MCPs e adaptação obrigatória de componente importado
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
-- `remotion-preview`: vídeo da prévia
+- `remotion-preview`: vídeo da prévia (HyperFrames por padrão, Remotion opcional)
+
+**Skills de terceiros já incluídas** (36, vêm junto no plugin, nada pra instalar à parte)
+| Área | Skills | Origem |
+|---|---|---|
+| Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects`, `frontend-design`, `ui-ux-pro-max` | pbakaus, leonxlnx, Anthropic, nextlevelbuilder |
+| Revisão de UI | `web-design-guidelines`, `vercel-react-best-practices` | Vercel |
+| Animação | `emil-design-eng`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `apple-design`, `pick-ui-library` | Emil Kowalski |
+| Imagem / marca | `imagegen-frontend-web`, `image-to-code`, `brandkit` | leonxlnx |
+| Conversão / SEO / copy | `copywriting`, `copy-editing`, `cro`, `seo-audit`, `schema`, `marketing-psychology` | Corey Haines |
+| Vídeo (HyperFrames) | `hyperframes`, `hyperframes-core`, `hyperframes-cli`, `hyperframes-animation`, `hyperframes-keyframes`, `product-launch-video` (tour de site a partir da URL), `motion-graphics`, `general-video`, `media-use` | HeyGen |
+| Navegador / QA | `agent-browser` | Vercel |
+
+**Instalado automaticamente na 1ª sessão**: as 12 skills do **Remotion** (o repo delas não tem licença de redistribuição, então o hook `SessionStart` roda `npx skills add remotion-dev/skills` uma vez por máquina, em segundo plano).
+
+Licenças e origens: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Pra puxar a versão mais nova das skills de terceiros: `node scripts/update-vendored.mjs`.
 
 **Agentes**: `variant-builder` (haiku), `visual-qa` (haiku), `slop-auditor` (herda o modelo da sessão)
 
-**Scripts**: `slop-lint.mjs` (sem dependências; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`)
+**Scripts**: `slop-lint.mjs` (sem dependências; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`), `bootstrap-extras.mjs` (instala o Remotion na 1ª sessão), `update-vendored.mjs` (atualiza as skills de terceiros)
 
 **MCPs já configurados** (`.mcp.json`): 21st.dev, OriginKit, Design Systems (southleft), Context7, shadcn, Playwright
 
@@ -85,14 +100,8 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 
 Para adicionar: `claude mcp add --transport http <nome> <url>` ou edite o `.mcp.json` do plugin.
 
-## Skills externas que combinam (instalar à parte)
-- Impeccable (pbakaus): `/audit`, `/polish`, `/bolder`, `/critique`... ver https://impeccable.style
-- Taste Skill: `npx -y skills add leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code`
-- Emil Kowalski (design engineering / motion): `npx skills add emilkowalski/skill`
-- UI UX Pro Max, frontend-design (Anthropic)
-- Remotion: `npx remotion skills add` dentro do projeto de vídeo
-
-Cuidado com excesso: cada skill instalada adiciona tokens em toda mensagem. Use `/skill-doctor` pra ver quais nunca são usadas.
+## Peso no contexto
+São ~45 skills. Só a descrição curta de cada uma vai em toda mensagem; o conteúdo carrega quando é usado. Se sentir o limite apertando, rode `/skill-doctor` no Claude Code pra ver quais nunca são usadas.
 
 ## Créditos das ideias
 Workflow em 3 etapas (repertório → armar o Claude → abrir o leque) e 4 inputs: @omatheusdaia · lista de lançamento: @fabianocarvalhojr · referências: @nocodealex · regras anti-slop inspiradas em nexu-io/open-design, uxdesign.cc e no anti-slop framework (Medium).

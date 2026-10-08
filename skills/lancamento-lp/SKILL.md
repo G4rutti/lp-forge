@@ -5,6 +5,8 @@ description: Checklist de lançamento de landing page/site (SEO, conversão, con
 
 # Lançamento: 20 itens antes de publicar
 
+Skills incluídas pra apoiar: `seo-audit` (auditoria SEO completa), `schema` (JSON-LD LocalBusiness/FAQ/Breadcrumb), `copywriting` + `copy-editing` (texto dos CTAs e seções), `cro` (otimização de conversão), `marketing-psychology` (prova social, ancoragem), `agent-browser` (testar o site publicado num navegador real).
+
 Rode item por item. Marque ✅ / ❌ / N/A em `lancamento.md`. ❌ em item marcado (obrigatório) bloqueia o deploy.
 
 ## Conversão

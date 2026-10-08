@@ -65,7 +65,7 @@ ScrollTrigger com `scrub` pra hero pinado; sempre `gsap.matchMedia()` pra deslig
 ## Fontes de animação prontas
 - 21st.dev e OriginKit (MCPs do plugin) para componentes animados
 - transitions.dev para micro-transições copia-e-cola
-- Skill externa recomendada: `npx skills add emilkowalski/skill` (design engineering do Emil Kowalski)
+- Skills do Emil Kowalski já incluídas no plugin: `emil-design-eng` (filosofia e regras), `animation-vocabulary` (nome certo pra cada efeito), `find-animation-opportunities` (onde animar), `improve-animations` (melhorar o que existe), `review-animations` (auditar), `apple-design` (sensação Apple)
 
 ## Saída ao polir
 Ao revisar motion, entregue tabela **Antes / Depois / Por quê** e depois o código.

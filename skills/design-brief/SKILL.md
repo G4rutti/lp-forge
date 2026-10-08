@@ -41,6 +41,8 @@ Gere `brief.md` na raiz do projeto ANTES de qualquer código. Todo subagente lê
 - NUNCA: pop-up, autoplay com som, dark pattern, métrica inventada, jargão vazio, fontes/paletas banidas (skill anti-slop)
 ```
 
+Se o cliente não tem identidade visual nenhuma, rode a skill `brandkit` antes pra gerar uma base (paleta, tipografia, tom). Para os dials com mais nuance, a skill `design-taste-frontend` usa a mesma lógica (variância/movimento/densidade).
+
 ## Dials (guia rápido)
 | Dial | 1-3 | 4-6 | 7-10 |
 |---|---|---|---|

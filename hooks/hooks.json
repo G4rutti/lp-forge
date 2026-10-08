@@ -1,5 +1,16 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/bootstrap-extras.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",

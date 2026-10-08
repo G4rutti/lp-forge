@@ -25,5 +25,11 @@ Se um MCP não responder (não autenticado), siga com o próximo e avise em uma 
 - Conferir acessibilidade (foco, aria, contraste)
 - Registrar origem num comentário curto: `// base: 21st.dev/<autor>/<componente>`
 
+## Skills de apoio (incluídas)
+- `pick-ui-library`: escolher a lib certa antes de começar
+- `vercel-react-best-practices`: performance e padrões React/Next
+- `image-to-code`: transformar print de referência em código
+- `imagegen-frontend-web`: gerar imagens de hero/fundo coerentes com o site quando o cliente não tem foto
+
 ## Stack de animação
 - CSS puro primeiro; Motion (`motion/react`) pra estado/layout; GSAP só pra timeline/scroll complexo; Three.js/R3F só quando o 3D for o "movimento ousado" da página e couber no orçamento de performance.

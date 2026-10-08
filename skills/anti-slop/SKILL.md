@@ -53,6 +53,7 @@ Se não dá pra responder 5 e 6, falta informação: busque no DNA da marca (ski
 80% padrões comprovados (legibilidade, hierarquia, CTA claro), 20% decisões distintas. Teste final: alguém de fora reconhece de qual negócio é o print sem ler o logo? Se não, falta alma.
 
 ## Ferramentas
+- Skills incluídas no plugin que complementam esta: `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`, `quieter`, `typeset`...), `design-taste-frontend` (dials de variância/movimento/densidade), `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects` (pra site que já existe), `web-design-guidelines` (revisão Vercel de a11y/UX em `file:line`), `frontend-design` (Anthropic).
 - Rode `node "${CLAUDE_PLUGIN_ROOT}/scripts/slop-lint.mjs" <arquivo-ou-pasta>` antes de dizer que terminou. P0 = não entrega.
 - Checklist completo de QA: `references/qc-checklist.md`.
 - Tabela de troca rápida (o que a IA faz → o que fazer): `references/trocas.md`.

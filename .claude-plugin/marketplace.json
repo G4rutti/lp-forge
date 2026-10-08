@@ -12,7 +12,7 @@
       "name": "lp-forge",
       "source": "./",
       "description": "Landing pages anti-slop com subagentes Haiku gerando variantes e auditoria do modelo principal.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     }
   ]
 }
