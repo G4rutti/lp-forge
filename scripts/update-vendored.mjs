@@ -16,14 +16,16 @@ const SOURCES = [
   { repo: "pbakaus/impeccable", license: "LICENSE", map: { "plugin/skills/impeccable": "impeccable" } },
   { repo: "nextlevelbuilder/ui-ux-pro-max-skill", license: "LICENSE", map: { ".claude/skills/ui-ux-pro-max": "ui-ux-pro-max" } },
   { repo: "coreyhaines31/marketingskills", license: "LICENSE", map: Object.fromEntries(["copywriting", "copy-editing", "cro", "seo-audit", "schema", "marketing-psychology"].map((s) => [`skills/${s}`, s])) },
+  { repo: "hardikpandya/stop-slop", license: "LICENSE", map: { ".": "stop-slop" }, only: ["SKILL.md", "references"] },
   { repo: "heygen-com/hyperframes", license: "LICENSE", map: Object.fromEntries(["hyperframes", "hyperframes-core", "hyperframes-cli", "hyperframes-animation", "hyperframes-keyframes", "general-video", "product-launch-video", "motion-graphics", "media-use"].map((s) => [`skills/${s}`, s])) },
 ];
-const JUNK = new Set(["node_modules", "__pycache__", ".DS_Store"]);
+const JUNK = new Set(["node_modules", "__pycache__", ".DS_Store", ".git"]);
 
-function copyDir(src, dst) {
+function copyDir(src, dst, only) {
   fs.mkdirSync(dst, { recursive: true });
   for (const e of fs.readdirSync(src, { withFileTypes: true })) {
     if (JUNK.has(e.name) || e.name.endsWith(".zip")) continue;
+    if (only && !only.includes(e.name)) continue;
     const s = path.join(src, e.name), d = path.join(dst, e.name);
     const real = fs.statSync(s);
     if (real.isDirectory()) copyDir(s, d); else fs.copyFileSync(s, d);
@@ -40,7 +42,7 @@ for (const src of SOURCES) {
     const keepLicense = path.join(target, "LICENSE.txt");
     const oldLicense = fs.existsSync(keepLicense) ? fs.readFileSync(keepLicense) : null;
     fs.rmSync(target, { recursive: true, force: true });
-    copyDir(path.join(dir, from), target);
+    copyDir(path.join(dir, from), target, src.only);
     if (src.license) fs.copyFileSync(path.join(dir, src.license), keepLicense);
     else if (oldLicense) fs.writeFileSync(keepLicense, oldLicense);
     console.log(`  ✓ ${to}`);

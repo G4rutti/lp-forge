@@ -49,6 +49,9 @@ Se não dá pra responder 5 e 6, falta informação: busque no DNA da marca (ski
 - Header < 80px de altura, CTA do hero visível sem scroll e sem quebrar linha.
 - Headline máx. 2 linhas no desktop; sub máx. ~20 palavras.
 
+## Texto (metade do slop está na copy)
+Layout bom com texto genérico continua parecendo IA. Toda copy segue a skill `copy-sem-slop`: só fatos do `fatos.md`, voz do `voz.md`, sem frases-clichê nem estruturas de IA ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"). Escreva `copy.md` antes do HTML. O `slop-lint` bloqueia (P0) clichês e contrastes binários em PT-BR no texto visível.
+
 ## Proporção 80/20
 80% padrões comprovados (legibilidade, hierarquia, CTA claro), 20% decisões distintas. Teste final: alguém de fora reconhece de qual negócio é o print sem ler o logo? Se não, falta alma.
 

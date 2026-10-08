@@ -32,6 +32,7 @@ Gere `brief.md` na raiz do projeto ANTES de qualquer código. Todo subagente lê
 - Anti-referência: o que NÃO queremos parecer
 
 ## 3. Intenção
+- Fatos: ./fatos.md · Voz: ./voz.md (obrigatórios pra negócio real; ver skill brand-dna)
 - Pra quem e o que deve acontecer depois de 10s na página
 - Detalhe de dono: ____
 - Provas reais disponíveis: nº avaliações Google, nota, anos de casa, fotos

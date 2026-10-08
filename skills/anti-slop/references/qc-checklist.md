@@ -9,6 +9,10 @@
 - [ ] O "movimento ousado" e o "detalhe de dono" estão visíveis acima da dobra ou na 2ª dobra
 
 ## Texto
+- [ ] Toda afirmação de fato existe em `fatos.md` (com fonte e data); nenhum `[DADO REAL]` pendente na versão final
+- [ ] Copy na voz do `voz.md`; zero P0/P1 de copy no `slop-lint`
+- [ ] Nota de copy ≥ 38/50 (Direto, Ritmo, Específico, Voz, Densidade)
+- [ ] Teste do nome coberto: o texto não serviria pra outro negócio da cidade
 - [ ] Zero lorem/placeholder; dados não verificados marcados `[DADO REAL: ...]`
 - [ ] Zero métrica inventada
 - [ ] CTAs com verbo + objeto ("Chamar no WhatsApp"), sem intenção duplicada lado a lado

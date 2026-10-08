@@ -64,15 +64,16 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
 - `remotion-preview`: vídeo da prévia (HyperFrames por padrão, Remotion opcional)
+- `copy-sem-slop`: copy em PT-BR sem vício de IA. Só fatos do `fatos.md` (com fonte e data), voz real do dono (`voz.md`), frases e estruturas proibidas ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"), antes/depois de LP local e nota de 5 dimensões
 
-**Skills de terceiros já incluídas** (36, vêm junto no plugin, nada pra instalar à parte)
+**Skills de terceiros já incluídas** (37, vêm junto no plugin, nada pra instalar à parte)
 | Área | Skills | Origem |
 |---|---|---|
 | Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects`, `frontend-design`, `ui-ux-pro-max` | pbakaus, leonxlnx, Anthropic, nextlevelbuilder |
 | Revisão de UI | `web-design-guidelines`, `vercel-react-best-practices` | Vercel |
 | Animação | `emil-design-eng`, `animation-vocabulary`, `find-animation-opportunities`, `improve-animations`, `review-animations`, `apple-design`, `pick-ui-library` | Emil Kowalski |
 | Imagem / marca | `imagegen-frontend-web`, `image-to-code`, `brandkit` | leonxlnx |
-| Conversão / SEO / copy | `copywriting`, `copy-editing`, `cro`, `seo-audit`, `schema`, `marketing-psychology` | Corey Haines |
+| Conversão / SEO / copy | `copywriting`, `copy-editing`, `cro`, `seo-audit`, `schema`, `marketing-psychology`, `stop-slop` (vícios de escrita de IA em inglês) | Corey Haines, Hardik Pandya |
 | Vídeo (HyperFrames) | `hyperframes`, `hyperframes-core`, `hyperframes-cli`, `hyperframes-animation`, `hyperframes-keyframes`, `product-launch-video` (tour de site a partir da URL), `motion-graphics`, `general-video`, `media-use` | HeyGen |
 | Navegador / QA | `agent-browser` | Vercel |
 
@@ -82,7 +83,7 @@ Licenças e origens: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Pra puxar
 
 **Agentes**: `variant-builder` (haiku), `visual-qa` (haiku), `slop-auditor` (herda o modelo da sessão)
 
-**Scripts**: `slop-lint.mjs` (sem dependências; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`), `bootstrap-extras.mjs` (instala o Remotion na 1ª sessão), `update-vendored.mjs` (atualiza as skills de terceiros)
+**Scripts**: `slop-lint.mjs` (sem dependências; pega slop visual **e de copy em PT-BR** no texto visível da página e em `copy*.md`; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`), `bootstrap-extras.mjs` (instala o Remotion na 1ª sessão), `update-vendored.mjs` (atualiza as skills de terceiros)
 
 **MCPs já configurados** (`.mcp.json`): 21st.dev, OriginKit, Design Systems (southleft), Context7, shadcn, Playwright
 

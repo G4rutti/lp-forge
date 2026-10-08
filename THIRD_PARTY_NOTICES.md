@@ -12,6 +12,7 @@ As skills abaixo foram copiadas sem alteração dos repositórios de origem, sob
 | impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Apache-2.0 |
 | ui-ux-pro-max | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT |
 | copywriting, copy-editing, cro, seo-audit, schema, marketing-psychology | [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) | MIT |
+| stop-slop | [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop) | MIT |
 | hyperframes, hyperframes-core, hyperframes-cli, hyperframes-animation, hyperframes-keyframes, general-video, product-launch-video, motion-graphics, media-use | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | Apache-2.0 |
 
 ## Instaladas automaticamente (não redistribuídas)

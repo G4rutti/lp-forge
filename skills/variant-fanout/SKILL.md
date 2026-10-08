@@ -65,7 +65,7 @@ Para cada variante:
 | Layout/espaço | hierarquia, respiro, quebra do esqueleto padrão, assimetria proposital |
 | Conversão | ação principal óbvia, CTA claro e fixo no mobile, prova real perto do CTA |
 | Movimento | adequado aos dials, só transform/opacity, reduced motion |
-| Copy | voz do negócio (DNA), específica, sem jargão de IA |
+| Copy | só fatos do `fatos.md`, voz do `voz.md`, zero clichê/estrutura de IA (skill `copy-sem-slop`); passe o teste do nome coberto |
 | Alma | dá pra reconhecer o negócio sem o logo? tem o "detalhe de dono"? |
 | Slop (penalidade) | −2 por P0, −0.5 por P1 do lint/inspeção |
 
@@ -80,6 +80,9 @@ O principal gera **2 versões refinadas** em `variantes/r2/`:
 Rode lint + screenshots de novo. Mostre ao usuário as duas com a tabela de notas atualizada.
 
 Opcional: se o usuário quiser mais exploração, rode **mais uma rodada Haiku** com 3 variações *dentro* da família vencedora (ex.: 3 heros diferentes), e o principal funde.
+
+### 5b. Passe de copy (você, modelo principal)
+Antes do ajuste fino, reescreva a copy da escolhida com a skill `copy-sem-slop` (ou `copy-editing` + `stop-slop` se for em inglês): lint de copy zerado, nota ≥ 38/50, nenhum `[DADO REAL]` que o usuário já possa responder. Texto genérico em layout bom é o slop que mais sobra.
 
 ### 6. Ajuste fino
 Injete o painel de ajustes na escolhida (só em dev):
