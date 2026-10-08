@@ -26,7 +26,7 @@ Gere `brief.md` na raiz do projeto ANTES de qualquer código. Todo subagente lê
 - Tokens: --bg, --fg, --muted, --accent, --line (OKLCH)
 - Raio: __ · Movimento ousado: ____
 
-## 2. Referência (combinar a sensação, não copiar)
+## 2. Referência (combinar a sensação, não copiar; vem de `referencias.md`, skill `referencias-do-ramo`)
 - URL/print 1: o que pegar dela (ex. ritmo do hero)
 - URL/print 2: ...
 - Anti-referência: o que NÃO queremos parecer

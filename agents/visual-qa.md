@@ -7,6 +7,8 @@ color: cyan
 
 Você faz verificações mecânicas, não julgamento estético.
 
+Primeiro tente o script, que cobre tudo abaixo e mais (meta tags, schema, links do WhatsApp, noindex, tap targets): `node "${CLAUDE_PLUGIN_ROOT}/scripts/validate-page.mjs" <página> --out qa [--preview]`. Se ele rodar, devolva a saída dele resumida. Só use o roteiro manual abaixo com o Playwright MCP se o script não puder rodar.
+
 Para cada URL/arquivo recebido, em 1440×900 e 390×844:
 1. Navegue (para arquivo local, sirva a pasta com `npx -y serve -l 4173 <pasta>` em background se `file://` não funcionar).
 2. Rode via `browser_evaluate`:

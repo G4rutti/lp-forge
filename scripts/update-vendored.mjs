@@ -15,7 +15,16 @@ const SOURCES = [
   { repo: "emilkowalski/skills", license: "LICENSE", map: Object.fromEntries(["emil-design-eng", "review-animations", "improve-animations", "animation-vocabulary", "find-animation-opportunities", "apple-design", "pick-ui-library"].map((s) => [`skills/${s}`, s])) },
   { repo: "pbakaus/impeccable", license: "LICENSE", map: { "plugin/skills/impeccable": "impeccable" } },
   { repo: "nextlevelbuilder/ui-ux-pro-max-skill", license: "LICENSE", map: { ".claude/skills/ui-ux-pro-max": "ui-ux-pro-max" } },
-  { repo: "coreyhaines31/marketingskills", license: "LICENSE", map: Object.fromEntries(["copywriting", "copy-editing", "cro", "seo-audit", "schema", "marketing-psychology"].map((s) => [`skills/${s}`, s])) },
+  { repo: "coreyhaines31/marketingskills", license: "LICENSE", map: Object.fromEntries(["copywriting", "copy-editing", "cro", "seo-audit", "schema", "marketing-psychology", "competitor-profiling", "customer-research"].map((s) => [`skills/${s}`, s])) },
+  { repo: "addyosmani/web-quality-skills", license: "LICENSE", map: Object.fromEntries(["accessibility", "web-quality-audit", "core-web-vitals", "performance", "best-practices", "seo"].map((s) => [`skills/${s}`, s])) },
+  { repo: "agricidaniel/claude-seo", license: "LICENSE", map: Object.fromEntries(["seo-local", "seo-page", "seo-technical", "seo-images", "seo-geo"].map((s) => [`skills/${s}`, s])), extra: (dir) => { for (const f of fs.readdirSync(path.join(dir, "scripts"))) if (f !== "__pycache__") fs.cpSync(path.join(dir, "scripts", f), path.join(ROOT, "scripts", f), { recursive: true }); fs.copyFileSync(path.join(dir, "requirements.txt"), path.join(ROOT, "requirements.txt")); } },
+  { repo: "jakubkrehel/skills", license: "LICENSE", map: Object.fromEntries(["better-interface", "better-ui", "better-typography", "better-layout", "better-colors", "better-accessibility", "better-writing", "interface-review", "explain-interface"].map((s) => [`skills/${s}`, s])) },
+  { repo: "vojtaholik/good-css", license: "LICENSE", map: { "skills/good-css": "good-css" } },
+  { repo: "squirrelscan/skills", license: "LICENSE", map: { "skills/audit-website": "audit-website" } },
+  { repo: "srinitude/skills", license: "LICENSE", map: { "skills/visual-design-system-extractor": "visual-design-system-extractor", "skills/mobile-first-website-design": "mobile-first-website-design" } },
+  { repo: "addyosmani/agent-skills", license: "LICENSE", map: Object.fromEntries(["doubt-driven-development", "frontend-ui-engineering", "browser-testing-with-devtools", "shipping-and-launch"].map((s) => [`skills/${s}`, s])), fixRefs: true },
+  { repo: "cloudflare/skills", license: "LICENSE", map: { "skills/web-perf": "web-perf", "skills/wrangler": "wrangler" } },
+  { repo: "anthropics/skills", license: "skills/webapp-testing/LICENSE.txt", map: { "skills/webapp-testing": "webapp-testing" } },
   { repo: "hardikpandya/stop-slop", license: "LICENSE", map: { ".": "stop-slop" }, only: ["SKILL.md", "references"] },
   { repo: "heygen-com/hyperframes", license: "LICENSE", map: Object.fromEntries(["hyperframes", "hyperframes-core", "hyperframes-cli", "hyperframes-animation", "hyperframes-keyframes", "general-video", "product-launch-video", "motion-graphics", "media-use"].map((s) => [`skills/${s}`, s])) },
 ];
@@ -45,8 +54,14 @@ for (const src of SOURCES) {
     copyDir(path.join(dir, from), target, src.only);
     if (src.license) fs.copyFileSync(path.join(dir, src.license), keepLicense);
     else if (oldLicense) fs.writeFileSync(keepLicense, oldLicense);
+    if (src.fixRefs) {
+      const sk = path.join(target, "SKILL.md"); let md = fs.readFileSync(sk, "utf8");
+      for (const m of new Set(md.match(/\.\.\/\.\.\/references\/[\w.-]+\.md/g) || [])) { fs.mkdirSync(path.join(target, "references"), { recursive: true }); fs.copyFileSync(path.join(dir, m.slice(6)), path.join(target, "references", path.basename(m))); }
+      fs.writeFileSync(sk, md.replace(/\.\.\/\.\.\/references\//g, "references/"));
+    }
     console.log(`  ✓ ${to}`);
   }
+  if (src.extra) src.extra(dir);
 }
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log("\nPronto. Revise com `git diff --stat` e commite.");

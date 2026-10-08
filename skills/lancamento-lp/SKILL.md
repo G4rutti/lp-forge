@@ -5,7 +5,7 @@ description: Checklist de lançamento de landing page/site (SEO, conversão, con
 
 # Lançamento: 20 itens antes de publicar
 
-Skills incluídas pra apoiar: `seo-audit` (auditoria SEO completa), `schema` (JSON-LD LocalBusiness/FAQ/Breadcrumb), `copywriting` + `copy-editing` (texto dos CTAs e seções), `cro` (otimização de conversão), `marketing-psychology` (prova social, ancoragem), `agent-browser` (testar o site publicado num navegador real).
+Skills incluídas pra apoiar: `seo-audit` (auditoria SEO completa), `schema` (JSON-LD LocalBusiness/FAQ/Breadcrumb), `copywriting` + `copy-editing` (texto dos CTAs e seções), `cro` (otimização de conversão), `marketing-psychology` (prova social, ancoragem), `agent-browser` (testar o site publicado num navegador real), `seo-local` (Google Business Profile, NAP), `seo-page` e `seo-technical`, `web-quality-audit` (Lighthouse completo: performance, a11y, SEO, boas práticas), `core-web-vitals`, `audit-website`, `wrangler` (deploy na Cloudflare). No fim, `/lp-forge:validar`.
 
 Rode item por item. Marque ✅ / ❌ / N/A em `lancamento.md`. ❌ em item marcado (obrigatório) bloqueia o deploy.
 

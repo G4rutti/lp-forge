@@ -26,7 +26,7 @@ brief.md + dna.md
 ## Passo a passo (o modelo principal executa)
 
 ### 0. Pré-requisitos
-- `brief.md` existe (skill `design-brief`). Se for lead, `dna.md` também (skill `brand-dna`).
+- `brief.md` existe (skill `design-brief`). Se for lead, `dna.md`, `fatos.md`, `voz.md` (skill `brand-dna`) e `referencias.md` + `referencias/` (skill `referencias-do-ramo`) também.
 - Defina N: padrão **4**; 3 se o brief for muito fechado; 5 se o usuário quer explorar.
 - Escopo: página inteira ou só uma seção (hero, pricing...). Para hero, a regra é: 5 estilos → escolhe 1 → 3 variações dentro dele → 1 vencedor.
 
@@ -89,7 +89,7 @@ Injete o painel de ajustes na escolhida (só em dev):
 `<script src="tweak-panel.js" defer></script>` copiando `${CLAUDE_PLUGIN_ROOT}/scripts/tweak-panel.js` para a pasta. Ele lê as CSS custom properties de `:root` e cria controles (cor, tamanho, fonte) ao vivo, com botão "copiar tokens". O usuário ajusta visualmente e cola os tokens de volta. Nunca chute ajuste fino no terminal.
 
 ### 7. Finalizar
-Copie para `final/`, remova o tweak panel, rode a skill `lancamento-lp` e o QC da skill `anti-slop`.
+Copie para `final/`, remova o tweak panel, rode a skill `lancamento-lp` e por fim `/lp-forge:validar` (agente `validador`, contexto limpo). Só entrega com APROVADO.
 
 ## Custos e limites
 - Haiku é barato e rápido: ótimo para exploração larga. Não peça a ele decisões finais.

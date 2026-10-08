@@ -33,7 +33,9 @@ Recomendado: **Claude Code**, onde o plugin funciona 100%. Pré-requisito: Node 
 | `/lp-forge:forjar <@insta ou negócio> [n=4]` | pipeline inteiro: DNA → brief → leque Haiku → auditoria → rodada 2 refinada → lançamento |
 | `/lp-forge:leque [n=3..5] [secao=hero] [dentro-de=familia]` | só o leque de variantes a partir do `brief.md` |
 | `/lp-forge:auditar <arquivo/pasta> [--corrigir]` | lint + auditor independente + QA visual, notas 0-10 e top 5 correções |
-| `/lp-forge:dna <@insta / Maps>` | extrai `dna.md` + `assets/` do negócio |
+| `/lp-forge:dna <@insta / Maps>` | extrai `dna.md`, `fatos.md`, `voz.md` + `assets/` do negócio |
+| `/lp-forge:referencias <nicho> [cidade]` | pesquisa referências do ramo e escreve `referencias.md` |
+| `/lp-forge:validar <pasta/URL> [previa\|final]` | validador independente: APROVADO/REPROVADO com evidência |
 | `/lp-forge:lancar <pasta> [previa\|final]` | checklist dos 20 itens + deploy (pede confirmação) |
 | `/lp-forge:video <pasta/URL>` | vídeo de 15s da LP com Remotion pra mandar no zap |
 
@@ -64,9 +66,10 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 - `variant-fanout`: o orquestrador do leque + rubrica
 - `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
 - `remotion-preview`: vídeo da prévia (HyperFrames por padrão, Remotion opcional)
+- `referencias-do-ramo`: 3 scouts Haiku acham referências do nicho (galerias por categoria, mercado maior, concorrentes locais), `ref-capture.mjs` tira screenshot e extrai fontes/paleta/CTA, e o modelo principal escreve `referencias.md`. Fontes testadas em `references/fontes.md`
 - `copy-sem-slop`: copy em PT-BR sem vício de IA. Só fatos do `fatos.md` (com fonte e data), voz real do dono (`voz.md`), frases e estruturas proibidas ("não é X, é Y", "mais que um X, um Y", "Sem X. Sem Y.", "E o melhor?"), antes/depois de LP local e nota de 5 dimensões
 
-**Skills de terceiros já incluídas** (37, vêm junto no plugin, nada pra instalar à parte)
+**Skills de terceiros já incluídas** (71, vêm junto no plugin, nada pra instalar à parte)
 | Área | Skills | Origem |
 |---|---|---|
 | Gosto / anti-slop | `impeccable` (`/impeccable audit`, `critique`, `polish`, `bolder`...), `design-taste-frontend`, `high-end-visual-design`, `minimalist-ui`, `industrial-brutalist-ui`, `redesign-existing-projects`, `frontend-design`, `ui-ux-pro-max` | pbakaus, leonxlnx, Anthropic, nextlevelbuilder |
@@ -75,15 +78,20 @@ Haiku explora largo e barato; o principal decide e escreve a versão boa. Págin
 | Imagem / marca | `imagegen-frontend-web`, `image-to-code`, `brandkit` | leonxlnx |
 | Conversão / SEO / copy | `copywriting`, `copy-editing`, `cro`, `seo-audit`, `schema`, `marketing-psychology`, `stop-slop` (vícios de escrita de IA em inglês) | Corey Haines, Hardik Pandya |
 | Vídeo (HyperFrames) | `hyperframes`, `hyperframes-core`, `hyperframes-cli`, `hyperframes-animation`, `hyperframes-keyframes`, `product-launch-video` (tour de site a partir da URL), `motion-graphics`, `general-video`, `media-use` | HeyGen |
-| Navegador / QA | `agent-browser` | Vercel |
+| Navegador / QA | `agent-browser`, `webapp-testing`, `browser-testing-with-devtools` | Vercel, Anthropic, Addy Osmani |
+| Auditoria web (Lighthouse) | `web-quality-audit`, `performance`, `core-web-vitals`, `accessibility`, `best-practices`, `seo`, `web-perf`, `audit-website` | Addy Osmani, Cloudflare, squirrelscan |
+| SEO local | `seo-local`, `seo-page`, `seo-technical`, `seo-images`, `seo-geo` | claude-seo |
+| Interface (review fino) | `better-interface`, `better-ui`, `better-typography`, `better-layout`, `better-colors`, `better-accessibility`, `better-writing`, `interface-review`, `explain-interface`, `good-css`, `frontend-ui-engineering`, `mobile-first-website-design`, `visual-design-system-extractor` | Jakub Krehel, Vojta Holík, Addy Osmani, srinitude |
+| Validação / lançamento | `doubt-driven-development`, `shipping-and-launch`, `wrangler` (deploy Cloudflare) | Addy Osmani, Cloudflare |
+| Pesquisa | `competitor-profiling`, `customer-research` | Corey Haines |
 
 **Instalado automaticamente na 1ª sessão**: as 12 skills do **Remotion** (o repo delas não tem licença de redistribuição, então o hook `SessionStart` roda `npx skills add remotion-dev/skills` uma vez por máquina, em segundo plano).
 
 Licenças e origens: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Pra puxar a versão mais nova das skills de terceiros: `node scripts/update-vendored.mjs`.
 
-**Agentes**: `variant-builder` (haiku), `visual-qa` (haiku), `slop-auditor` (herda o modelo da sessão)
+**Agentes**: `variant-builder` (haiku), `ref-scout` (haiku), `visual-qa` (haiku), `slop-auditor` (herda o modelo), `validador` (herda o modelo; portão final cético: mecânico + slop + fatos + visual + copy, APROVADO/REPROVADO)
 
-**Scripts**: `slop-lint.mjs` (sem dependências; pega slop visual **e de copy em PT-BR** no texto visível da página e em `copy*.md`; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`), `bootstrap-extras.mjs` (instala o Remotion na 1ª sessão), `update-vendored.mjs` (atualiza as skills de terceiros)
+**Scripts**: `slop-lint.mjs` (sem dependências; pega slop visual **e de copy em PT-BR** no texto visível da página e em `copy*.md`; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`), `bootstrap-extras.mjs` (instala o Remotion na 1ª sessão), `update-vendored.mjs` (atualiza as skills de terceiros), `ref-capture.mjs` (screenshots + extração de design de referências), `validate-page.mjs` (20 portões mecânicos: meta, schema, WhatsApp, CTA na dobra, CTA fixo, overflow, imagens, noindex de prévia...). Os dois últimos usam Playwright, que o plugin instala sozinho na 1ª sessão. O Python das skills de SEO (`requirements.txt`) é instalado pelo próprio launcher `scripts/claude-seo` quando a skill precisa
 
 **MCPs já configurados** (`.mcp.json`): 21st.dev, OriginKit, Design Systems (southleft), Context7, shadcn, Playwright
 
