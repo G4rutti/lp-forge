@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "21st": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp"
+    },
+    "originkit": {
+      "type": "http",
+      "url": "https://mcp.originkit.dev/mcp"
+    },
+    "design-systems": {
+      "type": "http",
+      "url": "https://design-systems-mcp.southleft.com/mcp"
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["-y", "shadcn@latest", "mcp"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}

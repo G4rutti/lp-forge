@@ -1,0 +1,18 @@
+{
+  "name": "g4rutti-plugins",
+  "owner": {
+    "name": "Davi Garutti",
+    "url": "https://github.com/G4rutti"
+  },
+  "metadata": {
+    "description": "Plugins do Davi para front-end e landing pages anti-AI-slop."
+  },
+  "plugins": [
+    {
+      "name": "lp-forge",
+      "source": "./",
+      "description": "Landing pages anti-slop com subagentes Haiku gerando variantes e auditoria do modelo principal.",
+      "version": "0.1.0"
+    }
+  ]
+}

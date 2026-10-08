@@ -1,0 +1,98 @@
+# lp-forge
+
+Plugin do Claude Code pra criar landing pages e sites **sem cara de IA**: brief em 4 inputs, DNA de marca do lead, leque de 3-5 subagentes **Haiku** gerando variantes em paralelo, e o modelo principal (Opus / Fable / Sonnet) auditando, fundindo e gerando versões melhores. Com linter de slop que roda sozinho a cada arquivo salvo.
+
+## Instalar
+
+```bash
+# opção 1: do GitHub (depois de subir este repo)
+/plugin marketplace add G4rutti/lp-forge
+/plugin install lp-forge@g4rutti-plugins
+
+# opção 2: local
+/plugin marketplace add C:/caminho/para/lp-forge
+/plugin install lp-forge@g4rutti-plugins
+```
+Depois rode `/mcp` e autentique os que pedem login (21st.dev usa OAuth no popup).
+
+### Onde roda o quê
+| | Claude Code (terminal / aba Code) | Cowork | Chat (claude.ai / desktop) |
+|---|---|---|---|
+| Skills e comandos | ✅ | ✅ | ✅ |
+| Agentes `lp-forge:*` | ✅ | ✅ | ❌ (fallback: agente genérico em Haiku com o `.md` colado, já previsto na skill `variant-fanout`) |
+| Hook do slop-lint | ✅ | ✅ | ❌ (rodar na mão) |
+| MCPs locais (Playwright, shadcn) | ✅ | ✅ (sessão local) | ❌ |
+| MCPs remotos (21st, OriginKit, Design Systems, Context7) | ✅ | ✅ | ✅ via aba Connectors |
+
+Recomendado: **Claude Code**, onde o plugin funciona 100%. Pré-requisito: Node 18+.
+
+## Comandos
+
+| Comando | O que faz |
+|---|---|
+| `/lp-forge:forjar <@insta ou negócio> [n=4]` | pipeline inteiro: DNA → brief → leque Haiku → auditoria → rodada 2 refinada → lançamento |
+| `/lp-forge:leque [n=3..5] [secao=hero] [dentro-de=familia]` | só o leque de variantes a partir do `brief.md` |
+| `/lp-forge:auditar <arquivo/pasta> [--corrigir]` | lint + auditor independente + QA visual, notas 0-10 e top 5 correções |
+| `/lp-forge:dna <@insta / Maps>` | extrai `dna.md` + `assets/` do negócio |
+| `/lp-forge:lancar <pasta> [previa\|final]` | checklist dos 20 itens + deploy (pede confirmação) |
+| `/lp-forge:video <pasta/URL>` | vídeo de 15s da LP com Remotion pra mandar no zap |
+
+## Como o leque funciona
+
+```
+brief.md + dna.md
+  ├─ variant-builder (haiku) · galeria-editorial ─┐
+  ├─ variant-builder (haiku) · print-tech         ├─► variantes/r1/  +  galeria (index.html lado a lado)
+  ├─ variant-builder (haiku) · quieto-clinico     │
+  └─ variant-builder (haiku) · editorial-bruto  ──┘
+        ▼
+  modelo principal: slop-lint + screenshots 1440/390 + rubrica 7 dimensões
+        ▼
+  r2/a-fiel  e  r2/b-ousada  (escritas pelo principal)  →  tweak panel  →  final/
+```
+Haiku explora largo e barato; o principal decide e escreve a versão boa. Página não se autoavalia: o `slop-auditor` é um agente separado que não viu a construção.
+
+## O que tem dentro
+
+**Skills** (o Claude puxa sozinho quando precisa)
+- `anti-slop`: P0/P1/P2 de tells de IA, regra do "movimento ousado" + "detalhe de dono", QC pre-flight, tabela de trocas
+- `design-brief`: 4 inputs (estética, referência, intenção, guardrails) + dials variância/movimento/densidade
+- `brand-dna`: DNA do lead via Insta + avaliações do Google + site atual
+- `repertorio`: 8 famílias visuais com tokens OKLCH, fontes e movimento prontos (inclui `galeria-editorial`, a da foto de referência) + onde garimpar referência
+- `motion`: durações, easings, o que nunca animar, receitas CSS/Motion/GSAP, nuvem 3D de imagens
+- `component-sourcing`: ordem de uso dos MCPs e adaptação obrigatória de componente importado
+- `variant-fanout`: o orquestrador do leque + rubrica
+- `lancamento-lp`: os 20 itens antes de lançar (404, CTA fixo mobile, obrigado, FAQ, schema LocalBusiness, OG, GA...)
+- `remotion-preview`: vídeo da prévia
+
+**Agentes**: `variant-builder` (haiku), `visual-qa` (haiku), `slop-auditor` (herda o modelo da sessão)
+
+**Scripts**: `slop-lint.mjs` (sem dependências; também roda como hook após Write/Edit e bloqueia P0), `gallery.mjs`, `tweak-panel.js` (Alt+T, ajusta tokens ao vivo e copia o `:root`)
+
+**MCPs já configurados** (`.mcp.json`): 21st.dev, OriginKit, Design Systems (southleft), Context7, shadcn, Playwright
+
+## MCPs pra conectar depois
+| MCP | Pra quê | Como |
+|---|---|---|
+| Figma Dev Mode (oficial) | puxar frames, variáveis e Code Connect | ativar no app desktop do Figma (precisa seat pago) |
+| Framelink / Figma Context | Figma via API em qualquer plano | `npx -y figma-developer-mcp --figma-api-key=SUA_KEY --stdio` |
+| Magic UI | componentes animados React | `npx -y @magicuidesign/mcp@latest` |
+| Chrome DevTools (Google) | inspecionar DOM, console, rede, performance | `npx -y chrome-devtools-mcp@latest` |
+| Canva / Webflow / Framer (oficiais) | levar o design pra essas ferramentas | ver repo oficial de cada |
+| Penpot | alternativa open source ao Figma | github.com/montevive/penpot-mcp |
+| Storybook | componentes de um design system existente | `@storybook/addon-mcp` |
+| Higgsfield | geração de imagem/vídeo dentro do Claude Code | ver site da Higgsfield |
+
+Para adicionar: `claude mcp add --transport http <nome> <url>` ou edite o `.mcp.json` do plugin.
+
+## Skills externas que combinam (instalar à parte)
+- Impeccable (pbakaus): `/audit`, `/polish`, `/bolder`, `/critique`... ver https://impeccable.style
+- Taste Skill: `npx -y skills add leonxlnx/taste-skill --skill design-taste-frontend --agent claude-code`
+- Emil Kowalski (design engineering / motion): `npx skills add emilkowalski/skill`
+- UI UX Pro Max, frontend-design (Anthropic)
+- Remotion: `npx remotion skills add` dentro do projeto de vídeo
+
+Cuidado com excesso: cada skill instalada adiciona tokens em toda mensagem. Use `/skill-doctor` pra ver quais nunca são usadas.
+
+## Créditos das ideias
+Workflow em 3 etapas (repertório → armar o Claude → abrir o leque) e 4 inputs: @omatheusdaia · lista de lançamento: @fabianocarvalhojr · referências: @nocodealex · regras anti-slop inspiradas em nexu-io/open-design, uxdesign.cc e no anti-slop framework (Medium).

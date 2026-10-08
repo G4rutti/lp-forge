@@ -1,0 +1,13 @@
+{
+  "name": "lp-forge",
+  "version": "0.1.0",
+  "description": "Forja de landing pages anti-AI-slop: brief em 4 inputs, DNA de marca, 3-5 subagentes Haiku gerando variantes em paralelo, auditoria do modelo principal, lint de slop, checklist de lançamento e MCPs de componentes (21st, OriginKit, shadcn).",
+  "author": {
+    "name": "Davi Garutti",
+    "url": "https://github.com/G4rutti"
+  },
+  "homepage": "https://github.com/G4rutti/lp-forge",
+  "repository": "https://github.com/G4rutti/lp-forge",
+  "license": "MIT",
+  "keywords": ["landing-page", "frontend", "design", "anti-slop", "subagents", "haiku"]
+}
