@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: seo-page
 description: >
   Analyze one supplied URL across on-page, content, technical metadata, schema,

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: seo-images
 description: >
   Image optimization analysis for SEO and performance. Checks alt text, file

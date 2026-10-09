@@ -20,7 +20,7 @@ async function loadPlaywright() {
 }
 const _pw = await loadPlaywright();
 if (!_pw) { console.error("playwright não encontrado. Ou espere o lp-forge terminar de instalar (1ª sessão), ou rode no projeto: npm i -D playwright && npx playwright install chromium"); process.exit(3); }
-const { chromium } = _pw;
+const chromium = _pw.chromium ?? _pw.default?.chromium;
 
 const args = process.argv.slice(2);
 const flag = (f) => args.includes(f);
@@ -88,8 +88,12 @@ async function run(vp, label) {
       reducedMotion: [...document.styleSheets].some((s) => { try { return [...s.cssRules].some((r) => r.media && /prefers-reduced-motion/.test(r.media.mediaText)); } catch { return false; } }),
     };
   });
-  const shot = path.join(out, `${name}-${label}.png`);
-  await page.screenshot({ path: shot, fullPage: true });
+  // JPEG leve e com altura capada: imagem grande é o item mais caro de ler pro modelo
+  const shot = flag("--no-shots") ? null : path.join(out, `${name}-${label}.jpg`);
+  if (shot) {
+    const h = await page.evaluate(() => document.documentElement.scrollHeight);
+    await page.screenshot({ path: shot, type: "jpeg", quality: 60, fullPage: true, clip: { x: 0, y: 0, width: vp.width, height: Math.min(h, label === "mobile" ? 5200 : 6200) } });
+  }
   await ctx.close();
   return { ...d, errors, failed, shot };
 }
@@ -127,7 +131,7 @@ if (flag("--json")) console.log(JSON.stringify({ target, gates, screenshots: [D.
 else {
   console.log(`validate-page: ${target}\n`);
   for (const g of gates) console.log(`${g.ok ? "PASS" : g.blocks ? "FAIL" : "WARN"}  ${g.id.padEnd(22)} ${g.detail}`);
-  console.log(`\nscreenshots: ${D.shot}  ${M.shot}`);
+  if (D.shot) console.log(`\nscreenshots (jpeg leve, veja só estes): ${D.shot}  ${M.shot}`);
   console.log(`Resultado: ${blocking.length ? `REPROVADO (${blocking.length} bloqueante(s))` : "APROVADO"} · ${fails.length - blocking.length} aviso(s)`);
 }
 process.exit(blocking.length ? 1 : 0);

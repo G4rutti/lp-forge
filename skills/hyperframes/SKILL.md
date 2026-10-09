@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: hyperframes
 description: >
   Mandatory entry point: read this first for any request to make, create, edit, animate, or render a

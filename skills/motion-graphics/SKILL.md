@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: motion-graphics
 description: >
   A short, design-led motion graphic where motion is the message — kinetic

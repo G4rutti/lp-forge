@@ -117,3 +117,7 @@ São ~45 skills. Só a descrição curta de cada uma vai em toda mensagem; o con
 
 ## Créditos das ideias
 Workflow em 3 etapas (repertório → armar o Claude → abrir o leque) e 4 inputs: @omatheusdaia · lista de lançamento: @fabianocarvalhojr · referências: @nocodealex · regras anti-slop inspiradas em nexu-io/open-design, uxdesign.cc e no anti-slop framework (Medium).
+
+## Custo (0.8.0)
+O `/lp-forge:forjar` agora roda em **modo rápido** por padrão (3 variantes, 1 scout, 1 rodada 2, 1 validação). `modo=completo` volta ao pipeline cheio.
+O que mais gastava e foi cortado: descrições das ~78 skills de terceiros no contexto de todo turno (agora só `/lp-forge:<nome>` explícito ou leitura pelo caminho, via `scripts/slim-skills.mjs`), auditor/validador no modelo caro (agora Sonnet), screenshots full-page em PNG (agora JPEG leve com altura limitada) e releituras de imagem.

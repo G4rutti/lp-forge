@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: hyperframes-cli
 description: >
   Use the HyperFrames CLI development loop: init, add, catalog, capture, lint, check, snapshot,

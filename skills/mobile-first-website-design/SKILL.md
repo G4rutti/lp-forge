@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: mobile-first-website-design
 description: 'Use when designing landing pages and marketing websites.'
 license: MIT

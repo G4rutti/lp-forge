@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: better-colors
 description: Helps you build and check a color system for your project. It generates palettes, names semantic tokens, converts between formats and measures contrast.
 ---

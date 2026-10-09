@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: better-interface
 description: Combines all of the `better-*` skills into a single review across accessibility, layout, writing, typography, color and UI polish.
 ---

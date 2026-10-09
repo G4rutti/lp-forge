@@ -68,4 +68,5 @@ for (const src of SOURCES) {
   if (src.extra) src.extra(dir);
 }
 fs.rmSync(tmp, { recursive: true, force: true });
+execFileSync("node", [path.join(ROOT, "scripts", "slim-skills.mjs")], { stdio: "inherit" });
 console.log("\nPronto. Revise com `git diff --stat` e commite.");

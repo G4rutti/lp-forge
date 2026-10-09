@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: motion-design
 description: >
   Applies motion design principles to create emotionally-driven, technically sound animations and transitions.

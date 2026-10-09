@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: hyperframes-keyframes
 description: >
   Use when a HyperFrames composition needs a punch-in, punch-out, zoom, reframe,

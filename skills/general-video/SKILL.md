@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: general-video
 description: >
   Author or edit a custom HyperFrames composition when no specialized workflow fits, or when

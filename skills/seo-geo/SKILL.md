@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: seo-geo
 description: >
   Audit and improve content for AI Overviews and answer engines, including

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: seo-local
 description: >
   Audit local SEO, including Google Business Profile, NAP consistency,

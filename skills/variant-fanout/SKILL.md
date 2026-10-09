@@ -27,7 +27,7 @@ brief.md + dna.md
 
 ### 0. Pré-requisitos
 - `brief.md` existe (skill `design-brief`). Se for lead, `dna.md`, `fatos.md`, `voz.md` (skill `brand-dna`) e `referencias.md` + `referencias/` (skill `referencias-do-ramo`) também.
-- Defina N: padrão **4**; 3 se o brief for muito fechado; 5 se o usuário quer explorar.
+- Defina N: padrão **3** (modo rápido do /forjar); 4-5 só em `modo=completo` ou se o usuário pedir pra explorar.
 - Escopo: página inteira ou só uma seção (hero, pricing...). Para hero, a regra é: 5 estilos → escolhe 1 → 3 variações dentro dele → 1 vencedor.
 
 ### 1. Distribuir direções
@@ -61,7 +61,7 @@ Não repita o brief no prompt; o agente lê o arquivo.
 ### 4. Auditoria (modelo principal, não delegue)
 Para cada variante:
 - `node "${CLAUDE_PLUGIN_ROOT}/scripts/slop-lint.mjs" variantes/r1/vK-*/`
-- Screenshot 1440px e 390px (Playwright MCP: `browser_navigate` para `file://` ou servidor local, `browser_resize`, `browser_take_screenshot`). Olhe as imagens de verdade.
+- `node "${CLAUDE_PLUGIN_ROOT}/scripts/validate-page.mjs" <variante> --out qa/<v>` gera portões + JPEG leve desktop/mobile. Olhe o desktop de cada variante e o mobile só da vencedora. Não use Playwright MCP pra tirar screenshot de novo.
 - Nota 0-10 em cada dimensão da rubrica abaixo, com 1 linha de justificativa. Diga como seria o 10.
 
 **Rubrica**
@@ -78,7 +78,7 @@ Para cada variante:
 | Repetição (penalidade) | −3 se a display, o fundo ou um padrão (fotos inclinadas, H1 itálico) repetir o histórico ou outra variante |
 | Slop (penalidade) | −2 por P0, −0.5 por P1 do lint/inspeção |
 
-Complementos de auditoria (skills incluídas): rode `/impeccable audit` na vencedora provável e `web-design-guidelines` no HTML dela; some os achados à tabela. Para revisar só a animação, `review-animations`.
+Complementos de auditoria (só em `modo=completo`): rode `/impeccable audit` na vencedora provável e `web-design-guidelines` no HTML dela; some os achados à tabela. Para revisar só a animação, `review-animations`.
 
 Variante com nota de Referências < 6 ou com penalidade de Repetição **não pode vencer**, mesmo com nota total maior. Não escolha a vencedora pela fonte "mais bonita"; escolha pela que mais parece aquele negócio + aplica as referências.
 

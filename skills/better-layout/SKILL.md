@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: better-layout
 description: Helps with grouping, alignment, reading order, responsive structure and room for translated text, so a layout holds up when it is resized, translated or mirrored.
 ---

@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: seo-technical
 description: >
   Audit technical SEO across crawlability, indexability, security, URLs, mobile,

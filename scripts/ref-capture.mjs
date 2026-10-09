@@ -20,9 +20,10 @@ async function loadPlaywright() {
 }
 const _pw = await loadPlaywright();
 if (!_pw) { console.error("playwright não encontrado. Ou espere o lp-forge terminar de instalar (1ª sessão), ou rode no projeto: npm i -D playwright && npx playwright install chromium"); process.exit(3); }
-const { chromium } = _pw;
+const chromium = _pw.chromium ?? _pw.default?.chromium;
 
-const [out, ...urls] = process.argv.slice(2);
+const LIGHT = process.argv.includes("--light"); // só viewport desktop+mobile, sem -full
+const [out, ...urls] = process.argv.slice(2).filter((a) => a !== "--light");
 if (!out || !urls.length) { console.error("uso: ref-capture.mjs <out-dir> <url> [url...]"); process.exit(64); }
 fs.mkdirSync(out, { recursive: true });
 
@@ -79,8 +80,8 @@ for (const url of urls) {
       // esconde banners de cookie/consentimento sem aceitar nada
       await page.addStyleTag({ content: '[id*="cookie" i],[class*="cookie" i],[id*="consent" i],[class*="consent" i],[class*="gdpr" i],[id*="onetrust" i],[class*="cc-window"]{display:none!important}' }).catch(() => {});
       const file = path.join(out, `${s}-${name}.jpg`);
-      await page.screenshot({ path: file, type: "jpeg", quality: 70, fullPage: false });
-      await page.screenshot({ path: path.join(out, `${s}-${name}-full.jpg`), type: "jpeg", quality: 55, fullPage: true }).catch(() => {});
+      await page.screenshot({ path: file, type: "jpeg", quality: 60, fullPage: false });
+      if (!LIGHT) await page.screenshot({ path: path.join(out, `${s}-${name}-full.jpg`), type: "jpeg", quality: 55, fullPage: true }).catch(() => {});
       if (name === "desktop") Object.assign(r, await page.evaluate(extract));
       r[name] = file;
       await ctx.close();

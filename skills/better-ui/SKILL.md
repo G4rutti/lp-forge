@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: better-ui
 description: Polishes the surfaces, icons and motion in your project with exact values for border radius, optical alignment, shadows, icon states and animation.
 ---

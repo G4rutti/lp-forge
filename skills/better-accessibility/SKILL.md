@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: better-accessibility
 description: Reviews and fixes keyboard and focus behavior, ARIA, accessible names, forms, screen-reader announcements, motion and zoom in your project against WCAG 2.2.
 ---
